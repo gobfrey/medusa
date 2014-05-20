@@ -1,0 +1,3 @@
+Install drupal from the web using drush - http://www.coderintherye.com/install-drupal-7-using-drush
+
+Install modules using drupal - http://sachachua.com/blog/2010/11/how-to-use-drush-to-download-and-install-drupal-modules/
