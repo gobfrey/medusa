@@ -1,0 +1,529 @@
+<html>
+<head>
+	<script type="text/javascript">
+/*
+		{ storyid:"1",
+		description:"",
+		tasks: [
+			{
+				description:"",
+				assigned:"",
+				points:2,
+				status:"Backlog",
+				priority:"Must",
+			},
+			
+		]},
+
+*/
+	document.project = {stories:[
+		{ storyid:"1",
+		description:"As a medical instructor I need to be able to complete modules with an NHS account or a full UoS account to enable me to use the system.",
+		tasks: [
+			{
+				assigned:"",
+				points:2,
+				status:"Backlog",
+				priority:"Must",
+				description:"Find and configure a plugin to do LDAP authentication against drupal."
+			},
+			
+			{
+				description:"Talk to MJ to find a way to test NHS user logins",
+				assigned:"",
+				points:1,
+				status:"Backlog",
+				priority:"Must",
+			},
+		]},
+		{ storyid:"2",
+		description:"As a medical instructor I need to be able to complete modules to demonstrate that I understand how to interact with students in an effective manner",
+		tasks: [
+			{
+				description:"Work out how to configure drupal content types to have a collection of pages",
+				assigned:"",
+				points:2,
+				status:"Backlog",
+				priority:"Must",
+			},
+			{
+				description:"Modify flash files to use an API",
+				assigned:"",
+				points:4,
+				status:"Backlog",
+				priority:"Must",
+			},
+			{
+				description:"Build an API for the recording of test answers",
+				assigned:"",
+				points:4,
+				status:"Backlog",
+				priority:"Must",
+			},
+			
+		]},
+		{ storyid:"3",
+		description:"As a medical instructor I need to be able to take fast-track route through the key areas of the module so that I can cover the essential material efficently",
+		tasks: [
+			{
+				description:"Add a tick box to make a page on the fast track route",
+				assigned:"",
+				points:1,
+				status:"Backlog",
+				priority:"Must",
+			},
+			{
+				description:"Make a script to do automatic linking though the fast track route of the module",
+				assigned:"",
+				points:2,
+				status:"Backlog",
+				priority:"Must",
+			},
+			
+		]},
+		{ storyid:"4",
+		description:"As a medical instructor I need clear understanding of the navigation of courses on the site in order to be clear that I have covered all the material that I need to.",
+		tasks: [
+			{
+				description:"Build dynamic menus which show the full structure of the course",
+				assigned:"",
+				points:2,
+				status:"Backlog",
+				priority:"Must",
+			},
+			
+			{
+				description:"Build a script which automatically does the next node in the assessment",
+				assigned:"",
+				points:2,
+				status:"Backlog",
+				priority:"Must",
+			},
+		]},
+		{ storyid:"5",
+		description:"As a medical instructor I need to be able to view which modules I have completed and print certificates so that I can prove what I have done",
+		tasks: [
+			{
+				description:"Build a screen similar to 'my medusa'",
+				assigned:"",
+				points:2,
+				status:"Backlog",
+				priority:"Must",
+			},
+			{
+				description:"Create script which generates certificates",
+				assigned:"",
+				points:1,
+				status:"Backlog",
+				priority:"Must",
+			},
+			
+		]},
+		{ storyid:"6",
+		description:"As a medical instructor I need to be able to re-take modules I have completed to keep my knowledge up to date.",
+		tasks: [
+			{
+				description:"SOMETHING MUST BE DONE",
+				assigned:"",
+				points:2,
+				status:"Backlog",
+				priority:"Must",
+			},
+			
+		]},
+		{ storyid:"7",
+		description:"As a medical instructor I need to be able to effortlessly (e.g without having to re-login to another system) access complimentary support material associated with a module to enable further self-study and improvement",
+		tasks: [
+			{
+				description:"Allow resources to be stored as a content type in drupal",
+				assigned:"",
+				points:2,
+				status:"Backlog",
+				priority:"Must",
+			},
+			{
+				description:"Allow resources to be links out to external systems",
+				assigned:"",
+				points:2,
+				status:"Backlog",
+				priority:"Must",
+			},
+			{
+				description:"Render resources at the end of the appropriate module",
+				assigned:"",
+				points:2,
+				status:"Backlog",
+				priority:"Must",
+			},
+		]},
+		{ storyid:"8",
+		description:"As a medical instructor I need to be able to assert that I have met the competencies of a module without completing the excercises to avoid duplicating work I have done elsewhere.",
+		tasks: [
+			{
+				description:"Create a tickbox which registers this module as completed by you.",
+				assigned:"",
+				points:2,
+				status:"Backlog",
+				priority:"Must",
+			},
+			
+		]},
+		{ storyid:"9",
+		description:"As a medical instructor I need to be able take a break from the material I am completing and return where I left off without losing any progress to enable me to fit my training around a busy schedule.",
+		tasks: [
+			{
+				description:"DO SOMETHING",
+				assigned:"",
+				points:2,
+				status:"Backlog",
+				priority:"Must",
+			},
+			
+		]},
+		{ storyid:"10",
+		description:"As a medical instructor I need to be able to easily locate modules which I still need to complete in order to minimise time wasted completing a module.",
+		tasks: [
+			{
+				description:"Make log in direct to the 'My Medusa' page",
+				assigned:"",
+				points:1,
+				status:"Backlog",
+				priority:"Must",
+			},
+			
+		]},
+		{ storyid:"11",
+		description:"As a medical instructor I need to be able to complete a survey evaluating the course to expressing my experience using the course.",
+		tasks: [
+			{
+				description:"Build a survey in iSurvey",
+				assigned:"",
+				points:2,
+				status:"Backlog",
+				priority:"Must",
+			},
+			
+			{
+				description:"Create a link to iSurvey with params for the module code prefiled",
+				assigned:"",
+				points:1,
+				status:"Backlog",
+				priority:"Must",
+			},
+		]},
+		{ storyid:"12",
+		description:"As a course administrator I need to be able to review survey evalution to work out how to improve the existing modules.",
+		tasks: [
+			{
+				description:"iSurvey report tool",
+				assigned:"",
+				points:1,
+				status:"Backlog",
+				priority:"Must",
+			},
+			
+		]},
+		{ storyid:"13",
+		description:"As a course administrator I need to be able to grant and revoke course administor privileges to other users to support changes in staffing within the team.",
+		tasks: [
+			{
+				description:"Make drupal assign administrator privileges to a user based on GroupX",
+				assigned:"",
+				points:2,
+				status:"Backlog",
+				priority:"Must",
+			},
+			
+		]},
+		{ storyid:"14",
+		description:"As a course administrator I need to generate reports about module completion in order to guage rates of complience with departmental requirements and identify issues with how materials are structured",
+		tasks: [
+			{
+				description:"Build reports page to report from the API",
+				assigned:"",
+				points:2,
+				status:"Backlog",
+				priority:"Must",
+			},
+			
+		]},
+		{ storyid:"15",
+		description:"As a course administrator it is desirable to be able to generate reports about the activity of a specific user (including from the legacy system) to assist with the provision of support and to verify users have completed all the training",
+		tasks: [
+			{
+				description:"Create a report the shows what a specific user filled in a on a particular module",
+				assigned:"",
+				points:2,
+				status:"Backlog",
+				priority:"Must",
+			},
+			
+		]},
+		{ storyid:"16",
+		description:"As a course administrator I need to be  able complete modules on the system, in order to test them, without them affecting the statistics generated by module completition reports in order to give more accurate picture of medical instructors activities.",
+		tasks: [
+			{
+				description:"Modules should have an active and inactive state, inactive modules are still accessible to admins",
+				assigned:"",
+				points:2,
+				status:"Backlog",
+				priority:"Must",
+			},
+			{
+				description:"Modules need an assignable course code which can be changed when the module goes live",
+				assigned:"",
+				points:2,
+				status:"Backlog",
+				priority:"Must",
+			},
+		]},
+		{ storyid:"17",
+		description:"As a course administrator I need to be able to make minor modification to course material (including reading lists) in order to keep courses up to date.",
+		tasks: [
+			{
+				description:"DO SOMETHING",
+				assigned:"",
+				points:2,
+				status:"Backlog",
+				priority:"Must",
+			},
+			
+		]},
+		{ storyid:"18",
+		description:"As a course administrator I need to be able to preview change sets before they are made live to allow significant modification to a course when it is being redesigned",
+		tasks: [
+			{
+				description:"Courses need to be able to be duplicated from a previous course?",
+				assigned:"",
+				points:2,
+				status:"Backlog",
+				priority:"Must",
+			},
+			
+		]},
+		{ storyid:"19",
+		description:"As a course administrator I need to be able to test new modules before they are available to medical instructors to assure quality",
+		tasks: [
+			{
+				description:"Courses need to be able to be duplicated from a previous course?",
+				assigned:"",
+				points:2,
+				status:"Backlog",
+				priority:"Must",
+			},
+			
+		]},
+		{ storyid:"20",
+		description:"As a course administrator I need to be able to deactivate current modules to retire them from active use in order to programme up to date.",
+		tasks: [
+			{
+				description:"see story 17",
+				assigned:"",
+				points:2,
+				status:"Backlog",
+				priority:"Must",
+			},
+			
+		]},
+		{ storyid:"21",
+		description:"As the organisation I need the site to branded to fit with in other department systems in order to provide a consistent user experience.",
+		tasks: [
+			{
+				description:"Use the drupal branded template from apostilos",
+				assigned:"",
+				points:2,
+				status:"Backlog",
+				priority:"Must",
+			},
+			
+		]},
+		{ storyid:"22",
+		description:"As a course creator I need to be able to create new courses which involve a mixture of rich text and interactive content so that I can deliver new material to instructors in an engaging way.",
+		tasks: [
+			{
+				description:"DO SOMETHING",
+				assigned:"",
+				points:2,
+				status:"Backlog",
+				priority:"Must",
+			},
+			
+		]},
+]};
+/*
+		{ storyid:"1",
+		description:"",
+		tasks: [
+			{
+				description:"",
+				assigned:"",
+				points:2,
+				status:"Backlog",
+				priority:"Must",
+			},
+			
+		]},
+
+*/
+	</script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v1.3.0.js"></script>
+	<title>Project Kanban</title>
+	<style type="text/css">
+		body { 
+			background-color: #eee; 
+			font-family: sans-serif;
+		}
+		#kanban .box {
+			display:inline-block;
+			width: 27%;
+			vertical-align:middle;
+			border-right: 1px dashed black;
+			border-top: 1px dashed black;
+			padding: 10px;
+			min-height: 4em;
+			vertical-align:top;
+		}
+		#kanban .box.person, #kanban .box:first-child {
+			width: 10%;
+		}
+		.parent-story, .priority, .points {
+			display: inline-block;
+			width:32%;
+			border-top: 1px solid black;
+			vertical-align:baseline;
+		}
+		.parent-story {
+			border-right: 1px solid black;
+		}
+		.points {
+			border-top: 1px solid black;
+			border-left: 1px solid black;
+		}
+		.story .task {
+			display:inline-block;
+			width: 45%;
+		}
+		.task {
+			background: #fff;
+			padding: 5px;
+			margin-bottom: 10px;
+		}
+		.task > div {
+			text-align:center;
+		}
+		.task .description{
+			padding: 1em 5px;
+		}
+		#stories {
+			padding-bottom: 1000px;
+		}	
+	</style>
+	<script id="task-template" type="text/x-handlebars-template">
+	<div class="task">
+		<div class="description">{{description}}</div>
+		<div class="parent-story"><a href="#story-{{storyid}}">Story: {{storyid}}</a></div>
+		<div class="priority">{{priority}}</div>
+		<div class="points">{{points}}</div>
+	</div>
+	</script>
+	<script id="story-template" type="text/x-handlebars-template">
+	<div class="story" id="story-{{storyid}}">
+		<h3>{{description}}</h3>
+		{{#each tasks}}
+			{{> task}}
+		{{/each}}
+	</div>
+	</script>
+	<script id="project-template" type="text/x-handlebars-template">
+	<div class="project"> 
+		{{#each stories}}
+			{{> story}}
+		{{/each}}
+	</div>
+	</script>
+	<script id="status-template" type="text/x-handlebars-template">
+	<table>
+		<tbody>
+		{{#each status}}
+			<tr><td>{{@key}}</td><td>{{this}}</td></tr>
+		{{/each}}
+		<tr><td>Total story points</td><td>{{total}}</td></tr>
+		</tbody>
+	</table>
+	<table>
+		<tbody>
+		{{#each person}}
+			<tr><td>{{@key}}</td><td>{{this}}</td></tr>
+		{{/each}}
+		</tbody>
+	</table>
+	</script>
+</head>
+<body>
+<h2>Project status<h2>
+<div id="project-status">
+
+</div>
+
+<h2>Kanban</h2>
+<div id="kanban">
+
+</div>
+
+<h2>User Stories</h2>
+<div id="stories">
+
+</div>
+
+<script type="text/javascript">
+	document.template = {};
+	document.tasks = {};
+	document.points = {total:0, status:{"Backlog":0, "In Progress":0,"Completed":0}, person:{}};
+	
+	document.template.task = Handlebars.compile( $("#task-template").html() );
+	document.template.story = Handlebars.compile( $("#story-template").html() );
+	document.template.project = Handlebars.compile( $("#project-template").html() );
+	document.template.status = Handlebars.compile( $("#status-template").html() );
+	Handlebars.registerPartial("task", document.template.task);
+	Handlebars.registerPartial("story", document.template.story);
+	var headings = ["Person", "Backlog", "In Progress", "Complete"];
+	for(var i=0; i < headings.length; i++)
+	{
+		$("#kanban").append($("<div class='box heading'>"+headings[i]+"</div>"));
+	}
+	for(var i=0; i < document.project.stories.length; i++) {
+		for(var j=0; j < document.project.stories[i].tasks.length; j++)
+		{	
+			document.project.stories[i].tasks[j].storyid = document.project.stories[i].storyid;
+			var task = document.project.stories[i].tasks[j];
+			if(document.tasks[task.assigned] == null){
+				document.tasks[task.assigned] = {"Backlog":[], "In Progress":[],"Completed":[]};
+				document.points.person[task.assigned] = 0;
+			}
+			
+			task.storyid = document.project.stories[i].storyid;
+			document.tasks[task.assigned][task.status].push(task);
+			document.points.total += task.points;
+			document.points.status[task.status] += task.points;
+			document.points.person[task.assigned] += task.points;
+		}
+
+	}
+	for(var person in document.tasks)
+	{
+		$("#kanban").append($("<div class='box person'>"+person+"</div>"));
+		for(var status in document.tasks[person]){
+			var box = $("<div class='box "+status+"'></div>");
+			for(var i = 0; i < document.tasks[person][status].length; i++)
+			{
+				box.append(document.template.task(document.tasks[person][status][i]));
+			}
+			$("#kanban").append(box);
+		}
+	}
+	$("#project-status").append(document.template.status(document.points));
+	$("#stories").append(document.template.project(document.project));
+</script>
+</body>
+</html>
