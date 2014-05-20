@@ -1,3 +1,18 @@
 Install drupal from the web using drush - http://www.coderintherye.com/install-drupal-7-using-drush
 
 Install modules using drupal - http://sachachua.com/blog/2010/11/how-to-use-drush-to-download-and-install-drupal-modules/
+
+installing CKeditor. NOTE: svn must be installed - http://www.webbykat.com/2012/06/installing-ckeditor-using-drush
+
+disable comments - drush dis -y comment
+
+install bundle copy so that modules can be imported
+	drush dl bundle_copy
+	drush en -y bundle_copy
+
+
+
+#may not be required
+#installing media -
+#	drush dl media
+#	drush en -y media
