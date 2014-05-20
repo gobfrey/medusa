@@ -17,7 +17,28 @@
 
 */
 	document.project = {stories:[
-		{ storyid:"1",
+		{
+		storyid:"housekeeping",
+		description:"As a developer, I need infrastructure to work on",
+		tasks: [
+			{
+				assigned:"Adam",
+				points:1,
+				status:"Completed",
+				priority:"Must",
+				description:"Create drupal development environment"
+			},
+			
+			{
+				description:"Create Github Project",
+				assigned:"Adam",
+				points:1,
+				status:"Completed",
+				priority:"Must",
+			},
+		]},
+		{
+		storyid:"1",
 		description:"As a medical instructor I need to be able to complete modules with an NHS account or a full UoS account to enable me to use the system.",
 		tasks: [
 			{
@@ -30,9 +51,9 @@
 			
 			{
 				description:"Talk to MJ to find a way to test NHS user logins",
-				assigned:"",
+				assigned:"Patrick",
 				points:1,
-				status:"Backlog",
+				status:"Completed",
 				priority:"Must",
 			},
 		]},
@@ -227,10 +248,10 @@
 		description:"As a course administrator I need to be able to grant and revoke course administor privileges to other users to support changes in staffing within the team.",
 		tasks: [
 			{
-				description:"Make drupal assign administrator privileges to a user based on GroupX",
-				assigned:"",
+				description:"Manage user levels locally (drupla FTW)",
+				assigned:"Patrick",
 				points:2,
-				status:"Backlog",
+				status:"Completed",
 				priority:"Must",
 			},
 			
