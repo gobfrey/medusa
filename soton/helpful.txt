@@ -10,6 +10,11 @@ install bundle copy so that modules can be imported
 	drush dl bundle_copy
 	drush en -y bundle_copy
 
+install LDAP dependencies
+	php: php5-ldap php5-gd
+	drush dl ldap
+	drush en ldap* (but then make sure LDAP SSO is disabled)
+
 
 
 #may not be required
