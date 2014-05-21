@@ -1,0 +1,227 @@
+.uos-sia-canvas * {
+     color: #000000 ! important;
+     overflow: visible ! important;
+}
+
+.uos-sia-canvas #uos-sia-content {
+     font-size: 120%;
+}
+
+.uos-sia-canvas a {
+     border-bottom: 1px dotted;
+     text-decoration: none ! important;
+}
+
+div div#uos-sia-card1.uos-sia-card div.uos-sia-col1 div.uos-sia-row div.uos-sia-col1{
+width: 650px;
+}
+
+div div#uos-sia-card1.uos-sia-card div.uos-sia-col1 div.uos-sia-row div.uos-sia-col2{
+width: 650px;
+}
+
+
+.uos-sia-canvas #uos-sia-content a:after, .uos-sia-canvas .uos-sia-peripheralcontent a:after {
+     content: " (" attr(href) ") ";
+     display: none;
+     font-size: 80%;
+}
+
+.uos-sia-canvas #uos-sia-accessibility, .uos-sia-canvas #uos-sia-nav, .uos-sia-canvas #uos-sia-footer {
+     display: none ! important;
+}
+
+.uos-sia-canvas #uos-sia-header {
+     background: none repeat scroll 0pt 50% transparent ! important;
+     border: 0pt none ! important;
+     height: auto ! important;
+     min-height: 0pt ! important;
+}
+
+.uos-sia-canvas #uos-sia-header {
+     background: none repeat scroll 0pt 50% transparent ! important;
+     border: 0pt none ! important;
+     height: auto ! important;
+     min-height: 0pt ! important;
+}
+
+.uos-sia-canvas #uos-sia-heading {
+     border-bottom: medium none ! important;
+}
+
+.uos-sia-canvas #uos-sia-heading h2 {
+     font-size: 2.8em;
+     margin-left: 10px;
+}
+
+.uos-sia-canvas #uos-sia-blurbLink {
+     color: #000000 ! important;
+     float: none ! important;
+     margin: 0pt ! important;
+}
+
+.uos-sia-canvas #uos-sia-blurbLink a {
+     color: #000000 ! important;
+}
+
+.uos-sia-canvas #uos-sia-blurbLink a:after {
+     content: " (" attr(href) ") ";
+}
+
+.uos-sia-canvas #uos-sia-logo {
+     background: url("/images/bg_logo_small.png") no-repeat scroll right 50% transparent ! important;
+     display: none;
+     float: none ! important;
+     height: 93px ! important;
+     margin: 0pt;
+     width: 100%;
+}
+
+.uos-sia-canvas #uos-sia-blurb {
+     background: none repeat scroll 0pt 50% transparent ! important;
+     display: block ! important;
+     float: none ! important;
+     height: auto ! important;
+     text-indent: 0pt ! important;
+     width: 100% ! important;
+}
+
+.uos-sia-canvas #uos-sia-summary {
+     background: none repeat scroll 0pt 50% transparent ! important;
+     color: #000000 ! important;
+     margin-top: 1em ! important;
+     padding: 0pt ! important;
+}
+
+.uos-sia-canvas #uos-sia-breadcrumb {
+     border-bottom: medium none ! important;
+     margin: 1em 1em 1em 0em ! important;
+}
+
+.uos-sia-canvas #uos-sia-breadcrumb * {
+     color: #999999 ! important;
+}
+
+.uos-sia-canvas #uos-sia-container h2 {
+     color: #000000 ! important;
+     margin-left: 0pt ! important;
+     width: 100%;
+}
+
+.uos-sia-canvas #uos-sia-content, .uos-sia-canvas .uos-sia-peripheralcontent {
+     clear: both;
+     float: none ! important;
+     height: auto ! important;
+     overflow: visible ! important;
+     padding-left: 0pt ! important;
+     width: auto ! important;
+}
+
+.uos-sia-canvas #uos-sia-content * {
+     color: #000000 ! important;
+}
+
+.uos-sia-canvas #uos-sia-content .uos-sia-image p {
+     color: #FFFFFF ! important;
+}
+
+.uos-sia-canvas #uos-sia-subcontent {
+     border-top: 1px dashed #CCCCCC ! important;
+     padding: 1em 0pt 0pt ! important;
+}
+
+.uos-sia-canvas #uos-sia-subcontent * {
+     background: none repeat scroll 0pt 50% transparent ! important;
+     color: #999999 ! important;
+     font-size: 1em ! important;
+}
+
+.uos-sia-canvas #uos-sia-subcontent .uos-sia-image .uos-sia-captionContainer p {
+     background: none repeat scroll 0% 0% #333333 ! important;
+     color: #FFFFFF ! important;
+}
+
+.uos-sia-canvas div.uos-sia-image .uos-sia-moreContainer {
+     display: none;
+}
+
+.uos-sia-canvas #uos-sia-container {
+     display: inline;
+}
+
+.uos-sia-canvas div.uos-sia-card, .uos-sia-canvas div.uos-sia-card ul {
+     overflow: hidden !important;
+}
+
+.uos-sia-canvas div.uos-sia-card {
+     border: 1px solid #333333 ! important;
+     display: block ! important;
+     margin: 10px ! important;
+     padding: 10px ! important;
+     width: 890px ! important;
+}
+
+.uos-sia-canvas div.uos-sia-card.uos-sia-row {
+     float: left ! important;
+}
+
+.uos-sia-canvas ul.uos-sia-tabs {
+     display: none ! important;
+}
+
+.uos-sia-canvas div.uos-sia-card div.uos-sia-row h3 {
+     padding: 8px 0px;
+}
+
+.uos-sia-canvas div.uos-sia-card div.uos-sia-row h4 {
+     padding: 8px 0px;
+}
+
+.uos-sia-canvas div.uos-sia-card div.uos-sia-row h5 {
+     padding: 8px 0px;
+}
+
+.uos-sia-canvas div.uos-sia-card div.uos-sia-row {
+     margin-bottom: 5px ! important;
+}
+
+.uos-sia-canvas div.uos-sia-card div.uos-sia-row div.uos-sia-col1 {
+     float: left;
+     width: 860px;
+}
+
+.uos-sia-canvas div.uos-sia-card div.uos-sia-row div.uos-sia-col2 {
+     float: left;
+     width: 860px;
+}
+
+.uos-sia-canvas div.uos-sia-card div.uos-sia-row ul.uos-sia-facts {
+     list-style: none outside none ! important;
+}
+
+.uos-sia-canvas div.uos-sia-card ul.uos-sia-listing li.uos-sia-alt {
+     background: none repeat scroll 0% 0% #FFFFFF;
+}
+
+.uos-sia-canvas div.uos-sia-card div.uos-sia-col1 {
+     float: left;
+     width: 630px;
+}
+
+.uos-sia-canvas div.uos-sia-card div.uos-sia-col2 {
+     float: right;
+     margin: 0px;
+     width: 200px;
+}
+
+.uos-sia-canvas div.uos-sia-card div.uos-sia-row ul.uos-sia-facts {
+     list-style: none outside none ! important;
+}
+
+.uos-sia-canvas .uos-sia-right_border {
+     border-right: medium none ! important;
+}
+
+.uos-sia-canvas div.uos-sia-card h3.uos-sia-tabtitle {
+  display: block !important;
+}

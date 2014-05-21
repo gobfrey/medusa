@@ -1,0 +1,49 @@
+
+* {
+    font-size: 100%;
+    margin: 0;
+    padding: 0;
+}
+body {
+    background: none repeat scroll 0 0 #CCCCCC;
+    color: #333333;
+    font-family: "Lucida Sans", sans-serif;
+    font-size: 62.5%;
+    margin: 0;
+}
+img, form, fieldset {
+    border: medium none;
+}
+table {
+    font-size: 100%;
+}
+td {
+    vertical-align: top;
+}
+a {
+    font-family: "Lucida Sans", sans-serif;
+    text-decoration: none;
+}
+a:hover, a:active, a:focus {
+    text-decoration: underline;
+}
+hr {
+    background-color: #CCCCCC;
+    border: 0 none;
+    clear: both;
+    color: #CCCCCC;
+    height: 1px;
+    margin-bottom: 10px;
+    overflow: visible;
+}
+div.uos-sia-clear {
+    border: 0 none !important;
+    clear: both !important;
+    font-size: 1px !important;
+    height: 1px !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    visibility: hidden !important;
+    width: 1px !important;
+}

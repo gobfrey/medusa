@@ -1,0 +1,70 @@
+<div id='tabbyLocator'></div>
+
+<script>
+jQuery(document).ready( function() {
+	var container = jQuery(".panels-flexible-row:has(#tabbyLocator)");
+	var tabbyPanel = jQuery(".panel-pane:has(#tabbyLocator)");
+ 	var tabs = container.find( ".panel-pane" ).not( tabbyPanel );
+      
+	tabbyPanel.hide();
+	//tabbyPanel.css( "border", "solid 1px blue" );
+	//container.css( "border", "solid 1px red" );
+	//tabs.css( "border", "solid 1px green" );
+	var tabPaneMap = {};
+	var tabTabMap = {};
+	var i = 0;
+	container.prepend( "<div class='uos_tabArea'><div class='uos_tabBar'><ul></ul></div></div>" );
+	var use_hash_fragment = false;
+	tabs.each( function( index, tabPane ) {
+		var tabid = "tab_"+(++i);
+		if( '#'+tabid == window.location.hash ) { use_hash_fragment = true; } 
+	} );
+	var tabArea = container.find( ".uos_tabArea" );
+	var ul = container.find( ".uos_tabArea ul" );
+	i = 0;
+	tabs.each( function( index, tabPane ) 
+	{
+		var title = jQuery( tabPane ).find( ".pane-title" ).text();
+		jQuery( tabPane ).find( ".pane-title" ).hide();
+		var tabid = "tab_"+(++i);
+		jQuery(tabPane).addClass( "uos_tab" );
+		jQuery(tabPane).removeClass( "panel-pane" );
+		tabPaneMap[tabid] = tabPane;
+		var li = jQuery( "<li><a href='#"+tabid+"'>"+title+"</a></li>" ).appendTo( ul ).get(0);
+		tabTabMap[tabid] = li;
+		jQuery(tabPane).detach().appendTo( tabArea ); 
+
+		var selected = false;
+		if( use_hash_fragment )
+		{
+			if( '#'+tabid == window.location.hash ) { selected = true; }
+			// set the uos_tabCurrent class on the tab mentioned in the hash fragment
+		}
+		else
+		{
+			if( i==1 ) { selected = true; }
+		}
+			
+		if( selected )
+		{
+			jQuery(li).addClass( "uos_tabCurrent" );
+		}
+		else
+		{
+			jQuery(li).removeClass( "uos_tabCurrent" );
+		}
+		if( !selected ) { jQuery(tabPane).hide(); }
+
+		jQuery(li).click( function() {
+			jQuery(ul).find( "li" ).removeClass( "uos_tabCurrent" );
+			jQuery(li).addClass( "uos_tabCurrent" );
+			jQuery(li).find("*").blur();
+			jQuery(tabArea).find( ".uos_tab" ).hide();
+			jQuery(tabPane).show();
+		} );
+	} );
+} );
+</script>
+<style>@import url("http://www.ecs.soton.ac.uk/sites/all/themes/southampton/css/uos_tabs.css?m5go3g");</style>
+<script type="text/javascript" src="http://www.ecs.soton.ac.uk/sites/all/themes/southampton2/js/uos_tabs.js?m5go3g"></script>
+

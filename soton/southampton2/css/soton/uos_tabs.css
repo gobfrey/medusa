@@ -1,0 +1,79 @@
+
+.uos_tabBar {
+	z-index: 11;
+	position: relative;
+	top: 1px;
+	width: 700px;
+        background-color: transparent;
+	padding: 0;
+	margin: 0;
+}
+.uos_tabBar ul {
+	padding: 0;
+	margin: 0;
+}
+
+.uos_tabBar li {
+	list-style: none;
+	float: left;
+	border-top: solid 1px #ccc;
+	border-bottom: solid 1px #ccc;
+	margin-right: 7px;
+	margin-top: 10px;
+	padding-top:5px;
+	position: relative;
+	background: url(http://www.southampton.ac.uk/assets/schools/design/images/cb3/bg_tabs.gif) repeat-x;
+	border-left: solid 1px #eee;
+	border-right: solid 1px #eee;
+}
+.uos_tabBar li a {
+	display: block;
+        font-family: verdana, sans-serif !important;
+	font-size: 13px;
+	text-decoration: none;
+	width: 80px;
+	height: 35px;
+	padding: 2px 10px 2px 10px;
+	background-image: none !important;
+}
+
+.uos_tabCurrent {
+	margin-top: 0px !important;
+	border-bottom-width: 0px !important;
+	border-left: solid 1px #ccc !important;
+	position: relative;
+	top: 1px;
+	border-right: solid 2px #ccc !important;
+	margin-right: 5px !important;
+	background: url(http://www.southampton.ac.uk/assets/schools/design/images/cb3/bg_tabs_teal.gif ) repeat-x #fff !important;
+}
+.uos_tabCurrent a {
+	padding-bottom:12px !important;
+}
+
+.uos_tab {
+	clear: both;
+	border-top: solid 1px #ccc;
+	border-left: solid 1px #ccc;
+	border-bottom: solid 2px #ccc;
+	border-right: solid 2px #ccc;
+	
+	position: relative;
+	z-index: 10;
+	padding: 20px;
+
+        font-family: verdana,sans-serif;
+        font-size: 1.2em;
+        line-height: 150%;
+}
+.uos_tab p, .uos_tab li, .uos_tab ul {
+	font-size: 100% !important;
+}
+	
+
+
+#tab_pane_resources .resource .label {
+	font-weight: bold;
+}
+
+
