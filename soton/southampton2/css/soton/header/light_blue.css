@@ -1,0 +1,13 @@
+#uos-sia-header .uos-sia-ls-area-body
+{
+  overflow:hidden;
+  background:#FFF;
+}
+
+#uos-sia-header {
+  background-color: #C2DAEB;
+}
+
+h1#uos-sia-logo {
+  background-image:url(../../images/cb3/logos/navy_clear_university.gif);
+}

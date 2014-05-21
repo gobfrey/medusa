@@ -1,0 +1,9 @@
+/* fpas IE7 extra bits */
+
+/*disgusting ie7 hack for removing list-style - by pm5*/
+
+
+    #uos-sia-nav ul, #uos-sia-nav ul li, #uos-sia-nav ul li ul, #uos-sia-nav ul li ul li, #uos-sia-nav ul li ul li ul li {
+	list-style:none;
+	list-style-image: none;
+}

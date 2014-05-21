@@ -1,0 +1,89 @@
+/**
+* IE6 specific settings
+*
+* This file can contain any hacks needed to get the styles working with IE6.uos-sia-.uos-sia-
+*
+*/
+.uos-sia-browserIE6 #uos-sia-container,
+.uos-sia-browserIE6 #uos-sia-content,
+.uos-sia-browserIE6 #uos-sia-accessibility,
+.uos-sia-browserIE6 div.uos-sia-news,
+.uos-sia-browserIE6 ul#uos-sia-breadcrumb,
+.uos-sia-browserIE6 div.uos-sia-image,
+.uos-sia-browserIE6 div.uos-sia-card,
+.uos-sia-browserIE6 div.uos-sia-row,
+.uos-sia-browserIE6 div.uos-sia-listing,
+.uos-sia-browserIE6 div.uos-sia-intro,
+.uos-sia-browserIE6 li.uos-sia-staff_list_item,
+.uos-sia-browserIE6 div.uos-sia-listing li,
+.uos-sia-browserIE6 ul.uos-sia-tabs,
+.uos-sia-browserIE6 h6,
+.uos-sia-browserIE6 .uos-sia-peripheralcontent ul,
+.uos-sia-browserIE6 .uos-sia-peripheralcontent cite,
+.uos-sia-browserIE6 .uos-sia-peripheralcontent .uos-sia-contactCard h2,
+.uos-sia-browserIE6 .uos-sia-peripheralcontent div.uos-sia-youtube,
+.uos-sia-browserIE6 .uos-sia-peripheralcontent div.uos-sia-youtube div.uos-sia-qp_wrapper,
+.uos-sia-browserIE6 .uos-sia-article_heading
+{
+	zoom:1;
+}
+
+.uos-sia-browserIE6 #uos-sia-container {
+  height: 860px;
+}
+
+.uos-sia-browserIE6 ul.uos-sia-tabs li {
+  width: 100px;
+}
+.uos-sia-browserIE6 ul.uos-sia-tabs li a {
+  height: 41px;
+  font-size: 0.9em;
+}
+
+.uos-sia-browserIE6 #uos-sia-ls-row-1 div,
+.uos-sia-browserIE6 #uos-sia-ls-row-4 div {
+  background-color: #ccc;
+}
+
+.uos-sia-browserIE6 #uos-sia-nav li.uos-sia-home{
+	border-bottom-width: 3px;
+}
+
+.uos-sia-browserIE6 .uos-sia-peripheralcontent div.uos-sia-image_browse_description {
+  clear: both;
+}
+
+.uos-sia-browserIE6 .uos-sia-qp_wrapper {
+  overflow: visible;
+}
+
+.uos-sia-browserIE6 table.uos-sia-webform {
+  margin-top: 20px;
+}
+
+.uos-sia-browserIE6 textarea, .uos-sia-browserIE6 input.uos-sia-required, .uos-sia-browserIE6 input.uos-sia-validation_none {
+  width: 98% !important;
+}
+
+.uos-sia-browserIE6 #uos-sia-homeHead h2 {
+  margin-top: 3px;
+}
+
+.uos-sia-browserIE6 div.uos-sia-article_heading div.uos-sia-testimonialDetails,
+.uos-sia-browserIE6 div.uos-sia-article_heading div.uos-sia-intro {
+  background-color: #F9F9F8 !important;
+}
+
+.uos-sia-browserIE6 div.uos-sia-image div.uos-sia-moreContainer {
+  background: transparent;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000,endColorstr=#99000000); /*AARRGGBB*/
+}
+
+.uos-sia-browserIE6 div.uos-sia-col1,div.uos-sia-col2,div.uos-sia-col3 {
+
+	margin-right: 0px;
+}
+
+.uos-sia-browserIE6 div.uos-sia-highlightBox {
+ _height: 270px;
+}

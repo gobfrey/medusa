@@ -4,6 +4,12 @@ Install modules using drupal - http://sachachua.com/blog/2010/11/how-to-use-drus
 
 installing CKeditor. NOTE: svn must be installed - http://www.webbykat.com/2012/06/installing-ckeditor-using-drush
 
+install ECS theme
+	drush dl zen  
+	drush en -y zen    #download and enable zen (required for ECS theme)
+	ln -s soton/southampton2/ themes/southampton2    #symlink ecs theme from from soton dir 
+
+
 disable comments - drush dis -y comment
 
 install bundle copy so that modules can be imported

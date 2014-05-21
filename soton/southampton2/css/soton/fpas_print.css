@@ -1,0 +1,8 @@
+
+/* fpas template specific print directives */
+
+/* print style for tabs */
+
+.uos_tabBar { display: none; }
+
+.uos_tab { display: block !important }
