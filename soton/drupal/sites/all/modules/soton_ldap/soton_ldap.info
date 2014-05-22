@@ -1,0 +1,8 @@
+name = soton_ldap
+core = 7.x
+package = Features
+dependencies[] = ctools
+dependencies[] = ldap_servers
+features[ctools][] = ldap_servers:ldap_servers:1
+features[features_api][] = api:2
+features[ldap_servers][] = soton_ldap
