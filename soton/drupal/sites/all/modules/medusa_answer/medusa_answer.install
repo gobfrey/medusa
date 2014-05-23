@@ -1,0 +1,75 @@
+<?php
+##
+#function medusa_answer_install() {
+#	error_log('hello');
+#
+#}
+#
+#function medusa_answer_uninstall() {
+#  drupal_uninstall_schema('medusa_answer');
+#}
+
+/**
+ * Implementation of hook_schema().
+ */
+function medusa_answer_schema() {
+  return array(
+    'medusa_answer' => array(
+      'description' => 'Stores medusa answers',
+      'fields' => array(
+        'module' => array(
+          'description' => t('module that the question is part of'),
+          'type' => 'varchar',
+          'length' => 16,
+          'not null' => TRUE,
+        ),
+        'module_attempt' => array(
+          'description' => t('The attempt number of the module (i.e. has it been done before)'),
+          'type' => 'int',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+          'default' => 0,
+        ),
+        'question' => array(
+          'description' => t('question id'),
+          'type' => 'varchar',
+          'length' => 16,
+          'not null' => TRUE,
+        ),
+        'subquestion' => array(
+          'description' => t('subquestion id'),
+          'type' => 'varchar',
+          'length' => 16,
+          'not null' => TRUE,
+        ),
+        'uid' => array(
+          'description' => t('The user that answered.'),
+          'type' => 'int',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+          'default' => 0,
+        ),
+        'timestamp' => array(
+          'description' => t('The timestamp for the answer (creation or lastmod).'),
+          'type' => 'int',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+          'default' => 0,
+        ),
+        'answer' => array(
+          'description' => t('The answer'),
+          'type' => 'text',
+          'size' => 'medium',
+        ),
+      ),
+      'primary key' => array('module','module_attempt', 'question', 'subquestion', 'uid'),
+
+
+      'indexes' => array(
+        'index1' => array('uid','module'),
+	'index2' => array('uid','module','module_attempt'),
+	'index3' => array('module','module_attempt'),
+      ),
+    ),
+  );
+}

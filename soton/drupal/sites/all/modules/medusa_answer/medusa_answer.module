@@ -1,0 +1,364 @@
+<?php
+
+#function medusa_answer_permission() {
+#	return array
+#	(
+#		'medusa_answer resource create' => array
+#		(
+#			'title' => t('medusa_answer resource create'),
+#			'description' => t('medusa_answer resource create')
+#		),
+#		'medusa_answer resource view any medusa_answer' => array
+#		(
+#			'title' => t('medusa_answer resource view any medusa_answer'),
+#			'description' => t('medusa_answer resource view any medusa_answer')
+#		),
+#		'medusa_answer resource view own medusa_answers' => array
+#		(
+#			'title' => t('medusa_answer resource view own medusa_answers'),
+#			'description' => t('medusa_answer resource view own medusa_answers')
+#		),
+#		'medusa_answer resource edit any medusa_answer' => array
+#		(
+#			'title' => t('medusa_answer resource edit any medusa_answer'),
+#			'description' => t('medusa_answer resource edit any medusa_answer')
+#		),
+#		'medusa_answer resource edit own medusa_answers' => array
+#		(
+#			'title' => t('medusa_answer resource edit own medusa_answers'),
+#			'description' => t('medusa_answer resource edit own medusa_answers')
+#		),
+#		'medusa_answer resource delete any medusa_answer' => array
+#		(
+#			'title' => t('medusa_answer resource delete any medusa_answer'),
+#			'description' => t('medusa_answer resource delete any medusa_answer')
+#		),
+#		'medusa_answer resource delete own medusa_answers' => array
+#		(
+#			'title' => t('medusa_answer resource delete own medusa_answers'),
+#			'description' => t('medusa_answer resource delete own medusa_answers')
+#		),
+#	);
+#}
+
+/**
+ * Gets a medusa_answer object by id.
+ *
+ * @param int $id
+ * @return object
+ */
+function medusa_answer_get_medusa_answer($uid, $module, $module_attempt, $question, $subquestion) {
+	$result = db_query
+	(
+		"SELECT * FROM {medusa_answer} WHERE uid=:uid AND module=:module AND module_attempt=:module_attempt AND question=:question AND subquestion=:subquestion",
+		array(
+			':uid' => $uid,
+			':module' => $module,
+			':module_attempt' => $module_attempt,
+			':question' => $question,
+			':subquestion' => $subquestion
+		)
+	);
+	return $result->fetchAssoc();
+}
+
+/**
+ * Writes a medusa_answer to the database
+ *
+ * @param object $medusa_answer
+ * @return void
+ */
+function medusa_answer_write_medusa_answer($medusa_answer) {
+	$schema = _medusa_answer_schema_copy();
+	$primary_key = $schema['primary_key'];
+error_log('a');
+	foreach ($primary_key as $p)
+	{
+		if (!$medusa_answer[$p])
+		{
+			return NULL;
+		}
+	}
+error_log('b');
+
+	if (!medusa_answer_get_medusa_answer(
+		$medusa_answer['uid'],
+		$medusa_answer['module'],
+		$medusa_answer['module_attempt'],
+		$medusa_answer['question'],
+		$medusa_answer['subquestion']
+	))
+	{
+		#no primary key will create rather than update
+		$primary_key = NULL;
+	}
+error_log('c');
+
+	error_log(drupal_write_record('medusa_answer', $medusa_answer, $primary_key));
+}
+
+/**
+ * Deletes a medusa_answer from the database.
+ *
+ * @param int $id
+ * @return void
+ */
+function medusa_answer_delete_medusa_answer($uid, $module, $module_attempt, $question, $subquestion) {
+	db_query
+	(
+		"DELETE FROM {medusa_answer} WHERE uid=:uid AND module=:module AND module_attempt=:module_attempt AND question=:question AND subquestion=:subquestion",
+		array(
+			'uid' => $uid,
+			'module' => $module,
+			'module_attempt' => $module_attempt,
+			'question' => $question,
+			'subquestion' => $subquestion
+		)
+	);
+}
+
+/**
+ * Implementation of hook_services_resources().
+ */
+function medusa_answer_services_resources() {
+  return array(
+   'medusa_answer' => array(
+     'retrieve' => array(
+       'help' => 'Retrieves a medusa_answer',
+       'file' => array('file' => 'inc', 'module' => 'medusa_answer'),
+       'callback' => '_medusa_answer_retrieve',
+       'access callback' => '_medusa_answer_access',
+       'access arguments' => array('view'),
+       'access arguments append' => TRUE,
+       'args' => array(
+         array(
+           'name' => 'module',
+           'type' => 'string',
+           'description' => 'The ID of the module',
+           'source' => array('param' => 'module'),
+           'optional' => FALSE,
+         ),
+         array(
+           'name' => 'module_attempt',
+           'type' => 'int',
+           'description' => 'The module attempt',
+           'source' => array('param' => 'module_attempt'),
+           'optional' => TRUE,
+           'default_value' => -1, #current attempt
+         ),
+         array(
+           'name' => 'question',
+           'type' => 'string',
+           'description' => 'The ID of the question',
+           'source' => array('param' => 'question'),
+           'optional' => FALSE,
+         ),
+         array(
+           'name' => 'subquestion',
+           'type' => 'string',
+           'description' => 'The ID of the subquestion',
+           'source' => array('param' => 'subquestion'),
+           'optional' => FALSE,
+         ),
+       ),
+     ),
+     'create' => array(
+       'help' => 'Creates a medusa_answer',
+       'file' => array('file' => 'inc', 'module' => 'medusa_answer'),
+       'callback' => '_medusa_answer_create',
+#       'access callback' => 'user_access',
+       'access callback' => '_medusa_answer_access',
+       'access arguments' => array('medusa_answer resource create'),
+       'access arguments append' => FALSE,
+       'args' => array(
+         array(
+           'name' => 'module',
+           'type' => 'string',
+           'description' => 'The ID of the module',
+           'source' => array('param' => 'module'),
+           'optional' => FALSE,
+         ),
+         array(
+           'name' => 'module_attempt',
+           'type' => 'int',
+           'description' => 'The module attempt',
+           'source' => array('param' => 'module-attempt'),
+           'optional' => TRUE,
+           'default_value' => -1, #current attempt
+         ),
+         array(
+           'name' => 'question',
+           'type' => 'string',
+           'description' => 'The ID of the question',
+           'source' => array('param' => 'question'),
+           'optional' => FALSE,
+         ),
+         array(
+           'name' => 'subquestion',
+           'type' => 'string',
+           'description' => 'The ID of the subquestion',
+           'source' => array('param' => 'subquestion'),
+           'optional' => FALSE,
+         ),
+         array(
+           'name' => 'answer',
+           'type' => 'string',
+           'description' => 'The ID of the subquestion',
+           'source' => array('param' => 'answer'),
+           'optional' => FALSE,
+         ),
+       ),
+     ),
+     'update' => array(
+       'help' => 'Updates a medusa_answer',
+       'file' => array('file' => 'inc', 'module' => 'medusa_answer'),
+       'callback' => '_medusa_answer_update',
+       'access callback' => '_medusa_answer_access',
+       'access arguments' => array('update'),
+       'access arguments append' => TRUE,
+       'args' => array(
+         array(
+           'name' => 'module',
+           'type' => 'string',
+           'description' => 'The ID of the module',
+           'source' => array('param' => 'module'),
+           'optional' => FALSE,
+         ),
+         array(
+           'name' => 'module_attempt',
+           'type' => 'int',
+           'description' => 'The module attempt',
+           'source' => array('param' => 'module_attempt'),
+           'optional' => TRUE,
+           'default_value' => -1, #current attempt
+         ),
+         array(
+           'name' => 'question',
+           'type' => 'string',
+           'description' => 'The ID of the question',
+           'source' => array('param' => 'question'),
+           'optional' => FALSE,
+         ),
+         array(
+           'name' => 'subquestion',
+           'type' => 'string',
+           'description' => 'The ID of the subquestion',
+           'source' => array('param' => 'subquestion'),
+           'optional' => FALSE,
+         ),
+         array(
+           'name' => 'answer',
+           'type' => 'string',
+           'description' => 'The ID of the subquestion',
+           'source' => array('param' => 'answer'),
+           'optional' => FALSE,
+         ),
+       ),
+     ),
+     'delete' => array(
+       'help' => 'Deletes a medusa_answer',
+       'file' => array('file' => 'inc', 'module' => 'medusa_answer'),
+       'callback' => '_medusa_answer_delete',
+       'access callback' => '_medusa_answer_access',
+       'access arguments' => array('delete'),
+       'access arguments append' => TRUE,
+       'args' => array(
+         array(
+           'name' => 'module',
+           'type' => 'string',
+           'description' => 'The ID of the module',
+           'source' => array('param' => 'module'),
+           'optional' => FALSE,
+         ),
+         array(
+           'name' => 'module_attempt',
+           'type' => 'int',
+           'description' => 'The module attempt',
+           'source' => array('param' => 'module_attempt'),
+           'optional' => TRUE,
+           'default_value' => -1, #current attempt
+         ),
+         array(
+           'name' => 'question',
+           'type' => 'string',
+           'description' => 'The ID of the question',
+           'source' => array('param' => 'question'),
+           'optional' => FALSE,
+         ),
+         array(
+           'name' => 'subquestion',
+           'type' => 'string',
+           'description' => 'The ID of the subquestion',
+           'source' => array('param' => 'subquestion'),
+           'optional' => FALSE,
+         ),
+       ),
+     ),
+     'index' => array(
+       'help' => 'Retrieves a listing of medusa_answers',
+       'file' => array('file' => 'inc', 'module' => 'medusa_answer'),
+       'callback' => '_medusa_answer_index',
+       'access callback' => 'user_access',
+       'access arguments' => array('access content'),
+       'access arguments append' => FALSE,
+       'args' => array(array(
+           'name' => 'page',
+           'type' => 'int',
+           'description' => '',
+           'source' => array(
+             'param' => 'page',
+           ),
+           'optional' => TRUE,
+           'default value' => 0,
+         ),
+         array(
+           'name' => 'parameters',
+           'type' => 'array',
+           'description' => '',
+           'source' => 'param',
+           'optional' => TRUE,
+           'default value' => array(),
+         ),
+       ),
+     ),
+   ),
+  );
+}
+
+/**
+ * Access callback for the medusa_answer resource.
+ *
+ * @param string $op
+ *  The operation that's going to be performed.
+ * @param array $args
+ *  The arguments that will be passed to the callback.
+ * @return bool
+ *  Whether access is given or not.
+ */
+function _medusa_answer_access($op, $args) {
+  global $user;
+  $access = FALSE;
+
+  return TRUE; #grant all access for now -- fix this later
+
+  switch ($op) {
+    case 'view':
+      $medusa_answer = medusa_answer_get_medusa_answer($args[0]);
+      $access = user_access('medusa_answer resource view any medusa_answer');
+      $access = $access || $medusa_answer->uid == $user->uid && user_access('medusa_answer resource view own medusa_answers');
+      break;
+    case 'update':
+      $medusa_answer = medusa_answer_get_medusa_answer($args[0]->id);
+      $access = user_access('medusa_answer resource edit any medusa_answer');
+      $access = $access || $medusa_answer->uid == $user->uid && user_access('medusa_answer resource edit own medusa_answers');
+      break;
+    case 'delete':
+      $medusa_answer = medusa_answer_get_medusa_answer($args[0]);
+      $access = user_access('medusa_answer resource delete any medusa_answer');
+      $access = $access || $medusa_answer->uid == $user->uid && user_access('medusa_answer resource delete own medusa_answers');
+      break;
+  }
+
+  return $access;
+}
+

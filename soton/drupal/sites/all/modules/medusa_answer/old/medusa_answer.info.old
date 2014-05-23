@@ -1,0 +1,6 @@
+name = Medusa Answer
+description = Endpoint and Node definition to store medusa answers
+package = Medusa answer
+core = 7.x
+dependencies[] = services
+dependencies[] = rest_server

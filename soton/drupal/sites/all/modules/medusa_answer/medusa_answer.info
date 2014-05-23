@@ -1,0 +1,7 @@
+name = Medusa Answer API
+description = Store and retrieve medusa answers
+package = Medusa answer
+dependencies[] = services
+core = 7.x
+files[] = medusa_answer.install
+files[] = medusa_answer.inc

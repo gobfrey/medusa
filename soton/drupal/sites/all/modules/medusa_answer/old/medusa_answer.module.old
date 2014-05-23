@@ -1,0 +1,201 @@
+<?php
+
+function medusa_answer_enable()
+{
+  //clear the cache to display in Feeds as available plugin.
+  cache_clear_all('plugins:feeds:plugins', 'cache');
+
+
+}
+
+function medusa_answer_disable()
+{
+	foreach (_medusa_answer_installed_fields() as $field)
+	{
+		field_delete_field($field['field_name']);
+	}
+
+	node_type_delete('medusa_answer');
+}
+
+function medusa_answer_node_info() {
+  // We define the node type as an associative array.
+  return array(
+    'medusa_answer' => array(
+      'name' => t('Medusa Answer'),
+      // 'base' tells Drupal the base string for hook functions.
+      // This is often the module name; if base is set to 'mymodule',
+      // Drupal would call mymodule_insert() or similar for node
+      // hooks. In our case, the base is 'medusa_answer'.
+      'base' => 'medusa_answer',
+      'description' => t('This is a node to store medusa answers'),
+      'title_label' => t('Medusa Answer'),
+      // We'll set the 'locked' attribute to TRUE, so users won't be
+      // able to change the machine name of our content type.
+      'locked' => TRUE,
+    ),
+  );
+}
+
+function medusa_answer_node_type_insert($content_type) {
+  if ($content_type->type == 'medusa_answer') {
+
+    // Create all the fields we are adding to our content type.
+    foreach (_medusa_answer_installed_fields() as $field) {
+      field_create_field($field);
+    }
+
+    // Create all the instances for our fields.
+    foreach (_medusa_answer_installed_instances() as $instance) {
+      $instance['entity_type'] = 'node';
+      $instance['bundle'] = 'medusa_answer';
+      field_create_instance($instance);
+    }
+  }
+}
+
+function medusa_answer_form($node, $form_state) {
+  return node_content_form($node, $form_state);
+}
+
+function medusa_answer_page() {
+  // We'll start building a renderable array that will be our page.
+  // For now we just declare the array.
+  $renderable_array = array();
+  // We query the database and find all of the nodes for the type we defined.
+  $sql = 'SELECT nid FROM {node} n WHERE n.type = :type AND n.status = :status';
+  $result = db_query($sql,
+    array(
+      ':type' => 'medusa_answer',
+      ':status' => 1,
+    )
+  );
+  $renderable_array['explanation'] = array(
+    '#markup' => t("Node Example nodes you've created will be displayed here. Note that the color fields will be displayed differently in this list, than if you view the node normally. Click on the node title to see the difference. This is a result of using our 'medusa_answer_node_list' node view type."),
+  );
+  // Loop through each of our medusa_answer nodes and instruct node_view
+  // to use our "medusa_answer_node_list" view.
+  // http://api.drupal.org/api/function/node_load/7
+  // http://api.drupal.org/api/function/node_view/7
+  foreach ($result as $row) {
+    $node = node_load($row->nid);
+    $renderable_array['node_list'][] = node_view($node, 'medusa_answer_node_list');
+  }
+  return $renderable_array;
+}
+
+/**
+ * Implements hook_entity_info_alter().
+ *
+ * We need to modify the default node entity info by adding a new view mode to
+ * be used in functions like node_view() or node_build_content().
+ */
+function medusa_answer_entity_info_alter(&$entity_info) {
+  // Add our new view mode to the list of view modes...
+  $entity_info['node']['view modes']['medusa_answer_node_list'] = array(
+    'label' => t('Medusa Answer List'),
+    'custom settings' => TRUE,
+  );
+}
+
+
+function _medusa_answer_installed_fields() {
+  return array(
+    'medusa_answer_answer' => array(
+      'field_name'  => 'medusa_answer_answer',
+      'type'        => 'text',
+    ),
+    'medusa_answer_user_id' => array(
+      'field_name'  => 'medusa_answer_user_id',
+      'type'        => 'text',
+    ),
+    'medusa_answer_module_id' => array(
+      'field_name'  => 'medusa_answer_module_id',
+      'type'        => 'text',
+    ),
+    'medusa_answer_question_id' => array(
+      'field_name'  => 'medusa_answer_question_id',
+      'type'        => 'text',
+    ),
+    'medusa_answer_sub_question_id' => array(
+      'field_name'  => 'medusa_answer_sub_question_id',
+      'type'        => 'text',
+    ),
+    'medusa_answer_attempt' => array(
+      'field_name'  => 'medusa_answer_attempt',
+      'type'        => 'text',
+    ),
+    'medusa_answer_datestamp' => array(
+      'field_name'  => 'medusa_answer_datestamp',
+      'type'        => 'text',
+    ),
+  );
+}
+
+function _medusa_answer_installed_instances() {
+  return array(
+    'medusa_answer_answer' => array(
+      'field_name'  => 'medusa_answer_answer',
+      'label' => t('Answer'),
+      'type'        => 'text',
+      'widget'      => array(
+        'type'    => 'text_textfield',
+      )
+    ),
+    'medusa_answer_user_id' => array(
+      'field_name'  => 'medusa_answer_user_id',
+      'label' => t('User ID'),
+      'type'        => 'text',
+      'widget'      => array(
+        'type'    => 'text_textfield',
+      )
+    ),
+    'medusa_answer_module_id' => array(
+      'field_name'  => 'medusa_answer_module_id',
+      'label' => t('Module ID'),
+      'type'        => 'text',
+      'widget'      => array(
+        'type'    => 'text_textfield',
+      )
+    ),
+    'medusa_answer_question_id' => array(
+      'field_name'  => 'medusa_answer_question_id',
+      'label' => t('Question ID'),
+      'type'        => 'text',
+      'widget'      => array(
+        'type'    => 'text_textfield',
+      )
+    ),
+    'medusa_answer_sub_question_id' => array(
+      'field_name'  => 'medusa_answer_sub_question_id',
+      'label' => t('Sub-question ID'),
+      'type'        => 'text',
+      'widget'      => array(
+        'type'    => 'text_textfield',
+      )
+    ),
+    'medusa_answer_attempt' => array(
+      'field_name'  => 'medusa_answer_attempt',
+      'label' => t('Attempt Session'),
+      'type'        => 'text',
+      'widget'      => array(
+        'type'    => 'text_textfield',
+      )
+    ),
+    'medusa_answer_datestamp' => array(
+      'field_name'  => 'medusa_answer_datestamp',
+      'label' => t('Date Stamp'),
+      'type'        => 'text',
+      'widget'      => array(
+        'type'    => 'text_textfield',
+      )
+    ),
+  );
+}
+
+/**
+ * @} End of "defgroup medusa_answer".
+ */
+
+
+

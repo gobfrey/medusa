@@ -1,0 +1,4 @@
+cp services-3.x-sample-master/noteresource.inc medusa_answer.inc
+cp services-3.x-sample-master/noteresource.module medusa_answer.module
+cp services-3.x-sample-master/noteresource.install medusa_answer.install
+cp services-3.x-sample-master/noteresource.info medusa_answer.info
