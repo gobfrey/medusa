@@ -1,6 +1,0 @@
-name = ldap export module
-description = Export objects from CTools
-dependencies[] = ldap_servers
-dependencies[] = views
-package = Chaos tool suite
-core = 7.x
