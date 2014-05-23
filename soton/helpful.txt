@@ -20,7 +20,8 @@ install LDAP dependencies
 	php: php5-ldap php5-gd
 	drush dl ldap
 	drush en ldap* (but then make sure LDAP SSO is disabled)
-
+	drush dis ldap_sso
+	-- then set user and authentication setting through the front end as desired
 
 
 #may not be required
