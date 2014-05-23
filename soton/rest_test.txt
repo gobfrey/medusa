@@ -1,0 +1,15 @@
+#how to test the rest interface from the command line:
+
+#log in and set cookie
+	- replace af05v-local with your username
+	- replace sausage with password
+	- replace http://localhost/medusa4/user/login with the url of the server
+curl -b /tmp/c.cookies -c /tmp/c.cookies -4 -X POST  --data 'name=af05v-local&pass=sausage&form_id=user_login&op=Log in' http://localhost/user/login
+
+#get the token
+curl -b /tmp/c.cookies -c /tmp/c.cookies -4 http://localhost/services/session/token > /tmp/my.token
+
+#put to REST URL
+curl -H X-CSRF-Token:`cat /tmp/my.token` -b /tmp/c.cookies -4 --data '{"type":"page"}' --header "Content-Type:application/json" 'http://localhost/med-api/medusa_answer?module=foo&question=1&subquestion=1&answer=thisismyuansdelkfjasdfsd'
+
+
