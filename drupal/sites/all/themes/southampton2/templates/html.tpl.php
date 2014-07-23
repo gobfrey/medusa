@@ -71,7 +71,7 @@
   <?php
      $cs = theme_get_setting('southampton2_colorscheme'); 
      if( $cs == "" ) { $cs = "teal"; }
-     print '<style>@import url("http://drupal-clone-master.ecs.soton.ac.uk/sites/all/themes/southampton2/css/soton/'.$cs.'.css");</style>';
+     print '<style>@import url("'.base_path().'themes/southampton2/css/soton/'.$cs.'.css");</style>';
   ?>
 
 

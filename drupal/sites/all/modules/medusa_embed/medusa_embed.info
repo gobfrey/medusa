@@ -1,0 +1,11 @@
+name = Medusa embed filter  
+description = Allows you to put tag [embed:filename.ext] and have appropriate flash files embedded 
+package = Medusa
+core = 7.x
+
+; Information added by drupal.org packaging script on 2012-01-12
+;version = "7.x-1.0";
+;core = "7.x"
+;project = "medusa"
+;datestamp = "1326408946"
+

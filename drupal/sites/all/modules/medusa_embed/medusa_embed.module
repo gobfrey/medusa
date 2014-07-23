@@ -1,0 +1,97 @@
+<?php
+
+/**
+ * @file
+ *
+ */
+
+/* ***************************************** */
+/* Hook Implementations                      */
+/* ***************************************** */
+
+/**
+ * Implements hook_help().
+ */
+function medusa_embed_help($path, $arg) {
+}
+
+/**
+ * Implements hook_filter_info().
+ *
+ * For performance, the uos_programme filter is allowed to be cached by default. See
+ * uos_programme_filter_invalidate_caches() for details. Some sites may use advanced
+ * uos_programme styles with rendering implentations that differs per theme or based on
+ * other runtime information. For these sites, it may be necessary to implement
+ * a module with a hook_filter_info_alter() implementation that sets
+ * $info['uos_programme_filter']['cache'] to FALSE.
+ *
+ * @see uos_programme_filter_invalidate_caches()
+ */
+function medusa_embed_filter_info() {
+  $filters['medusa_embed_filter'] = array(
+    'title' => t('Converts [embed:] tags'),
+    'description' => t('Converts [embed:filename.ext] tags to flash objects'),
+    'process callback' => 'medusa_embed_filter',
+    'cache' => false,
+    'weight' => 2,
+  );
+
+  return $filters;
+}
+
+
+/**
+ * Filter callback for uos_programme markup filter.
+ *
+ * @TODO check for security probably pass text through filter_xss
+ * @return unknown_type
+ */
+function medusa_embed_filter($text) {
+  $text = ' ' . $text . ' ';
+  //embed tag must look like [embed:filname.ext moduleID=1 activityID=2 width=100 height=100] 
+  //width and height are mandatory and their order is defined
+  $text = preg_replace_callback("/\[embed:([^\]\s]+) moduleID=(\d+) activityID=(\d+) width=(\d+) height=(\d+)\]/", 'medusa_embed_build_embed', $text);
+  return $text;
+}
+
+function medusa_embed_build_embed( $matches )
+{
+	global $base_url;
+	$api_url = "$base_url/medusa-api/medusa_answer";
+
+	if(preg_match("/.swf$/", $matches[1]))
+	{
+	return '
+			<embed src="'.$base_url.'/sites/default/files/'.$matches[1].'"
+			    quality="high"
+			    bgcolor="#ffffff"
+			    width="'.$matches[4].'"
+			    height="'.$matches[5].'"
+			    name="myFlashMovie"     
+			    FlashVars="moduleID='.$matches[2].'&activityID='.$matches[3].'&getAnswerURL='.urlencode($api_url).'&saveURL=%2Fflashtest.php&sessionExistsURL=%2Fflashtest.php&getAllUserAnswer=%2Fflashtest.php&clearURL=%2Fflashtest.php"
+			    align="middle"
+			    allowScriptAccess="sameDomain"
+			    allowFullScreen="false"
+			    type="application/x-shockwave-flash"
+			    pluginspage="http://www.adobe.com/go/getflash"
+			/>		
+		';
+	}else{
+		return '
+			<embed src="'.$base_url.'/soton/swfs/introVideo.swf"
+			    quality="high"
+			    bgcolor="#ffffff"
+			    width="'.$matches[4].'"
+			    height="'.$matches[5].'"
+			    name="myFlashMovie"     
+			    FlashVars="flashtest.php?moduleID='.$matches[2].'&activityID='.$matches[3].'&getAnswerURL=%2Fflashtest.php&saveURL=%2Fflashtest.php&sessionExistsURL=%2Fflashtest.php&getAllUserAnswer=%2Fflashtest.php&clearURL=%2Fflashtest.php&videoURL=Act2_1.flv"
+			    align="middle"
+			    allowScriptAccess="sameDomain"
+			    allowFullScreen="false"
+			    type="application/x-shockwave-flash"
+			    pluginspage="http://www.adobe.com/go/getflash"
+			    style="float:right;padding-left:5px;"
+			/>
+		';
+	}
+}

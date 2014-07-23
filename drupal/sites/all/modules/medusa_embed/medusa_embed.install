@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the UoS Programme module.
+ */
+
+
+/**
+ * Implements hook_install().
+ */
+function medusa_embed_install() {
+}
