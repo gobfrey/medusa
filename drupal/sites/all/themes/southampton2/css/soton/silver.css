@@ -1,0 +1,124 @@
+/**
+* Colour specific settings
+*
+#uos-sia- This file is to contain ONLY the overrides needed to changing the colour of the site,
+* so no colours, sizes, fonts or spacings styles
+*
+* This will mainly be used for the background colours, foreground colours and coloured image backgrounds
+*
+*
+*/
+#uos-sia-header {
+	border-color: #A1A1A1;
+}
+
+div.uos-sia-tags ul li,h2,h3,h4,
+div.uos-sia-intro p,
+div p.uos-sia-intro,
+blockquote p,
+p.uos-sia-lead,
+table th,
+dl.uos-sia-staff dt,
+p em,
+#uos-sia-content h4,
+#uos-sia-content h5, 
+#uos-sia-content h6,
+ul#uos-sia-breadcrumb li a,
+div.uos-sia-peripheralcontent h3,
+div.uos-sia-featured h3,
+div.uos-sia-listing h3,
+#uos-sia-webform fieldset legend,
+.uos-sia-serif,
+div.uos-sia-contactCard h4
+{
+	color: #3E494E;
+}
+
+a:link,a:visited, #uos-sia-container table tr td a,
+div .uos-sia-card a, .uos-sia-ep_citations_item a
+{
+	color: #1F4F82;
+}
+
+/*
+ Main Left Navigation
+*********************************************************/
+#uos-sia-nav li a {
+	color: #FFF;
+}
+
+#uos-sia-nav li#uos-sia-searchBox, #uos-sia-nav li.uos-sia-home a, #uos-sia-nav li.uos-sia-sotonhome a, input.uos-sia-button {
+	background-color: #A1A1A1;
+}
+
+#uos-sia-nav li.uos-sia-home a:hover, #uos-sia-nav li a:hover, #uos-sia-nav li.uos-sia-active a, #uos-sia-nav li.uos-sia-inactive a:hover, #uos-sia-nav li.uos-sia-sotonhome a:hover {
+	background-color: #3E494D;
+}
+
+#uos-sia-nav li#uos-sia-searchBox button.uos-sia-submit {
+	background-image: url(../../images/cb3/nav_silver_search.gif);
+}
+
+#uos-sia-nav li#uos-sia-searchBox input.uos-sia-text, #uos-sia-nav li.uos-sia-pages, #uos-sia-nav li.uos-sia-home  {
+	border-color: #B7BBBD;
+}
+
+#uos-sia-nav li.uos-sia-home a {
+	background-image: url(../../images/cb3/nav_silver_home.gif);
+}
+
+#uos-sia-nav li.uos-sia-home a:hover {
+	background-image: url(../../images/cb3/nav_silver_home_over.gif);
+}
+
+#uos-sia-nav li li.uos-sia-inactive a {
+	/* inactive items and inactive items under active items */
+	background-color: #6F777B;
+}
+
+#uos-sia-nav ul ul,#uos-sia-nav li li,#uos-sia-nav li li.uos-sia-active a,#uos-sia-nav li li.uos-sia-active li {
+	/* border for all items in the nav */
+	border-color: #B7BBBD !important;
+}
+
+/* University Home Top level Item */
+#uos-sia-nav li.uos-sia-sotonhome a {
+	background-image: url(../../images/cb3/nav_silver_back.gif);
+}
+
+#uos-sia-nav li.uos-sia-sotonhome a:hover {
+	background-image: url(../../images/cb3/nav_silver_back_over.gif);
+}
+
+/* page list styles */
+.uos-sia-pageList ul li, div.uos-sia-featured ul li,#uos-sia-content div.uos-sia-card div.uos-sia-row ul.uos-sia-facts li,.uos-sia-peripheralcontent ul li, div.uos-sia-card div.uos-sia-peripheralcontent ul li,.uos-sia-peripheralcontent div.uos-sia-newsfeed h3,.uos-sia-peripheralcontent h3.uos-sia-flickr   {
+  background-color: #F2F2F2;
+}
+
+/* tab navigation */
+div#uos-sia-content ul.uos-sia-tabs li.uos-sia-active a {
+	background: #FFF url(../../images/cb3/bg_tabs_silver.gif) repeat-x;
+}
+
+div.uos-sia-peripheralcontent div.uos-sia-feature div.uos-sia-feature-bg {
+  background: #FFF url(../../images/cb3/bg_highlightBox_silver.png) no-repeat 0 0;
+}
+
+/* profile styles */
+.uos-sia-testimonialDetails dl dt, .uos-sia-profileDetails dl dt {
+  color: #6F777B;
+}
+
+div.uos-sia-highlightBox {
+  background-image: url(../../images/cb3/bg_highlightBox_silver.png);
+}
+
+span.uos-sia-listing 
+{
+    color: #3E494E;
+}
+
+/* cjg */
+#uos-sia-nav li li a { background-color: #6F777B; }
+#uos-sia-nav .menu li { border-color: #B7BBBD !important; }
+#uos-sia-nav li.active-trail a.active-trail { background-color: #A1A1A1; }

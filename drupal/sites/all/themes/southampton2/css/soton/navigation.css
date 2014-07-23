@@ -1,0 +1,237 @@
+/*
+Breadcrumb Navigation
+*********************************************************/
+
+ul#uos-sia-breadcrumb {
+  border-bottom:1px solid #ccc;
+  overflow: hidden;
+  list-style: none;
+  margin: 0 0 1em 0;
+  padding-bottom: 6px;
+}
+  ul#uos-sia-breadcrumb li {
+    margin: 5px .8ex 0 0;
+    border-right: 1px solid #333;
+    padding-right: .8ex;
+    display: inline;
+  }
+    ul#uos-sia-breadcrumb li a {
+    }
+  ul#uos-sia-breadcrumb li.last {
+    border: 0;
+  }
+
+/*
+Main Left Navigation
+*********************************************************/
+#uos-sia-container #uos-sia-nav {
+  /** #nav is only inside #container on the actual pages, not in the Page Edit mode */
+  width: 210px;
+  height: 400px; 
+}
+
+#uos-sia-container #uos-sia-navposdefault {
+  position: absolute;
+  top: -120px;
+  left: 20px;
+}
+
+#uos-sia-container #uos-sia-navposbig {
+  position: absolute;
+  top: -153px;
+  left: 20px;
+
+}
+
+#uos-sia-nav ul {
+  font-family: Lucida Sans, sans-serif;
+  font-size: 0.9em;
+  list-style: none;
+  list-style-position: outside;
+  margin: 0;
+}
+
+  #uos-sia-nav li {
+    border-bottom:1px solid #fff;
+  }
+
+  #uos-sia-nav li a {
+    display:block;
+    font-size:1.6em;
+    padding: 7px 9px;
+    font-weight:normal;
+    text-decoration:none;
+  }
+
+  /* Search box top level item */
+
+  #uos-sia-nav li#uos-sia-searchBox {
+    border-bottom:3px solid #fff;
+    padding: 4px;
+    *padding: 2px 4px 4px;
+    margin-bottom: 0;
+  }
+
+
+  #uos-sia-nav li#uos-sia-searchBox button.uos-sia-submit {
+    width: 16px;
+    height: 16px;
+    border: 0;
+    background: url(../images/nav_content_search.gif) no-repeat left 50%;
+    text-indent: -1000em;
+    font-size: 0;
+    padding-top: 16px;
+    cursor: pointer;
+    vertical-align: middle;
+  }
+  #uos-sia-nav li#uos-sia-searchBox input.uos-sia-text {
+    border-width: 2px;
+    border-style: solid;
+    vertical-align: middle;
+    padding: 2px;
+    font-size: 1.5em;
+    color: #666;
+    font-family: Lucida Sans, sans-serif;
+    width: 170px;
+    margin-right: 5px;
+  }
+
+  #uos-sia-nav li#uos-sia-searchBox span#uos-sia-rad {
+    float:left;
+    width:198px;
+    margin:5px 0px 3px 4px;
+  }
+  #uos-sia-nav li#uos-sia-searchBox span#uos-sia-rad label {
+    display:inline;
+    width:6em;
+    color:#FFF;
+  }
+  #uos-sia-nav li#uos-sia-searchBox span#uos-sia-rad input {
+    margin:0px 10px 0px 3px;
+  }
+
+  /* Home Top level item */
+    #uos-sia-nav li.uos-sia-home {
+      border: 0;
+      zoom: 1;
+      _border: 0;
+    }
+    #uos-sia-nav li.uos-sia-home a{
+      background-image: url(../images/nav_content_home.gif);
+      background-repeat: no-repeat;
+      background-position: 185px 50%;
+      height: 1.125em;
+      padding-right: 39px;
+    }
+
+  /* Pages Top level Item */
+    #uos-sia-nav li.uos-sia-pages {
+      border: 0;
+      border-top: 3px solid #fff;
+      border-bottom: 3px solid #fff;
+      zoom: 1;
+      _border: 0;
+    }
+    #uos-sia-nav li.uos-sia-pages a {
+        padding-right: 9px;
+    }
+
+    #uos-sia-nav li.uos-sia-pages li li a {
+      display:block;
+      padding:8px 5px 8px 25px;
+      font-size:1.4em;
+      font-weight:normal;
+      text-decoration:none;
+    }
+
+    #uos-sia-nav li.uos-sia-pages li li li a {
+      padding: 4px 5px 4px 25px;
+    }
+
+
+    #uos-sia-nav li.uos-sia-pages li.uos-sia-active a {
+      border: 3px solid #fff;
+      border-width: 0 0 3px 0;
+    }
+    #uos-sia-nav li.uos-sia-pages li.uos-sia-active li a {
+      border: 0;
+    }
+    #uos-sia-nav li.uos-sia-pages li.uos-sia-active li.uos-sia-active li {
+      border: 0;
+    }
+    #uos-sia-nav li.uos-sia-pages li.uos-sia-active li.uos-sia-active li a {
+      background-image: url(../images/nav_round.gif) !important;
+      background-repeat:  no-repeat !important;
+      background-position: 30px .8em !important;
+      font-size: 1.3em;
+      padding-left: 41px;
+    }
+    #uos-sia-nav li.uos-sia-pages li.uos-sia-active li.uos-sia-active li.uos-sia-active li a{
+      background-image: url(../images/nav_dash.gif) !important;
+      background-repeat:  no-repeat !important;
+      background-position: 50px .9em !important;
+      padding-left: 60px;
+    }
+
+    #uos-sia-nav li.uos-sia-pages li.uos-sia-last {
+      border-bottom: 0;
+    }
+
+    #uos-sia-nav li.uos-sia-pages li li.uos-sia-last{
+      border-bottom: 0 !important;
+    }
+
+  /* University Home Top level Item */
+    #uos-sia-nav li.uos-sia-sotonhome a {
+      background-image: url(../images/nav_content_back.gif);
+      background-repeat: no-repeat;
+      background-position: right 50%;
+      padding-right: 39px;
+    }
+
+
+/*
+Tab Navigation
+*********************************************************/
+ul.uos-sia-tabs{
+  font-size: 1.6em;
+  list-style: none;
+  overflow: hidden;
+  margin: 10px 0 -1px 0;
+  clear: both;
+  position: relative;
+  z-index: 2;
+}
+/* Opera */
+html:first-child ul.uos-sia-tabs{margin-bottom:0;}
+html:first-child ul[class^=uos-sia-tabs]{margin-bottom:-1px !important;}
+  ul.uos-sia-tabs li{
+    float: left;
+    margin-right: 8px;
+    min-width: 100px;
+  }
+  ul.uos-sia-tabs li.uos-sia-last{
+    margin-right: 0;
+  }
+    ul.uos-sia-tabs li a{
+      background: #fff url(../images/cb3/bg_tabs.gif) repeat-x;
+      border: 1px solid #ccc;
+      border-width: 1px 0;
+      display: block;
+      min-height: 41px;
+      min-width: 80px;
+      margin-top: 8px;
+      font-size: 1em;
+      padding: 2px 10px 0;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    ul.uos-sia-tabs li.uos-sia-active a{
+      background: #fff url(../images/cb3/bg_tabs_navy.gif) repeat-x;
+      border-left: 1px solid #ccc;
+      border-right: 3px solid #ccc;
+      border-bottom: 1px solid #fff;
+      min-height: 41px;
+      padding: 10px 10px 0 9px;
+      margin-top: 0;
+    }

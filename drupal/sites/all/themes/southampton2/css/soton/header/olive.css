@@ -1,0 +1,13 @@
+#uos-sia-header .uos-sia-ls-area-body
+{
+  overflow:hidden;
+  background:#A3AB85;
+}
+
+h1#uos-sia-logo {
+  background-image:url(../../images/cb3/logos/olive_shaded_university.gif);
+}
+
+#uos-sia-header {
+  background-color: #A3AB85;
+}

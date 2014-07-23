@@ -1,0 +1,52 @@
+* {
+	margin:0;
+	padding:0;
+	font-size:100%;
+}
+body {
+	background: #ccc;
+	font-family:verdana, sans-serif;
+	color: #333;
+	margin: 0;
+	font-size:62.5%;
+}
+img,
+form,
+fieldset {
+	border:none;
+}
+table {
+	font-size:100%;
+}
+td {
+	vertical-align:top;
+}
+a {
+	text-decoration:none;
+	font-family:verdana, sans-serif !important;
+}
+a:hover,
+a:active,
+a:focus {
+	text-decoration:underline;
+}
+hr {
+	clear: both;
+	color:#ccc;
+	background-color:#ccc;
+	border:0;
+	height:1px;
+	overflow:visible;
+	margin-bottom:10px;
+}
+div.uos-sia-clear {
+	clear:both !important;
+	visibility:hidden !important;
+	overflow:hidden !important;
+	margin:0 !important;
+	padding:0 !important;
+	border:0 !important;
+	font-size:1px !important;
+	height:1px !important;
+	width:1px !important;
+}

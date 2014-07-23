@@ -1,0 +1,14 @@
+#uos-sia-header .uos-sia-ls-area-body
+{
+  overflow:hidden;
+  background:#A9ADB0;
+}
+
+
+#uos-sia-header {
+  background-color: #A9ADB0;
+}
+
+h1#uos-sia-logo {
+  background-image:url(../../images/cb3/logos/silver_shaded_university.gif);
+}

@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the soton_ldap feature.
- */
-
-include_once 'soton_ldap.features.inc';
