@@ -1,0 +1,3 @@
+[submodule "api/lib/fatfree"]
+	path = api/lib/fatfree
+	url = https://github.com/bcosca/fatfree.git
