@@ -57,7 +57,25 @@ function medusa_embed_filter($text) {
 function medusa_embed_build_embed( $matches )
 {
 	global $base_url;
-	$api_url = "$base_url/medusa-api/medusa_answer";
+	$api_url = "$base_url/soton/api";
+
+	$common_flash_vars = array(
+		'getAnswerURL' => "$api_url/getAnswer",
+		'saveURL' => "$api_url/save",
+		'sessionExistsUrl' => "$api_url/sessionExists",
+		'clearURL' => "$api_url/clear",
+		'getAllUserAnswer' => "$api_url/getAllUserAnswer"
+	);
+	$common_flash_args_string = '';
+	foreach ($common_flash_vars as $k => $v)
+	{
+		$common_flash_args_string .= '&';
+		$common_flash_args_string .= urlencode($k);
+		$common_flash_args_string .= '=';
+		$common_flash_args_string .= urlencode($v);
+	}
+
+
 
 	if(preg_match("/.swf$/", $matches[1]))
 	{
@@ -68,7 +86,7 @@ function medusa_embed_build_embed( $matches )
 			    width="'.$matches[4].'"
 			    height="'.$matches[5].'"
 			    name="myFlashMovie"     
-			    FlashVars="moduleID='.$matches[2].'&activityID='.$matches[3].'&getAnswerURL='.urlencode($api_url).'&saveURL=%2Fflashtest.php&sessionExistsURL=%2Fflashtest.php&getAllUserAnswer=%2Fflashtest.php&clearURL=%2Fflashtest.php"
+			    FlashVars="moduleID='.$matches[2].'&activityID='.$matches[3]. $common_flash_args_string . '"
 			    align="middle"
 			    allowScriptAccess="sameDomain"
 			    allowFullScreen="false"
@@ -84,7 +102,7 @@ function medusa_embed_build_embed( $matches )
 			    width="'.$matches[4].'"
 			    height="'.$matches[5].'"
 			    name="myFlashMovie"     
-			    FlashVars="flashtest.php?moduleID='.$matches[2].'&activityID='.$matches[3].'&getAnswerURL=%2Fflashtest.php&saveURL=%2Fflashtest.php&sessionExistsURL=%2Fflashtest.php&getAllUserAnswer=%2Fflashtest.php&clearURL=%2Fflashtest.php&videoURL=Act2_1.flv"
+			    FlashVars="flashtest.php?moduleID='.$matches[2].'&activityID='.$matches[3].'&videoURL=Act2_1.flv' . $common_flash_args_string . '"
 			    align="middle"
 			    allowScriptAccess="sameDomain"
 			    allowFullScreen="false"
