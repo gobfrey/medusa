@@ -75,7 +75,7 @@
   ?>
 
 
-  <script src='/sites/all/themes/southampton2/js/uos_tabs.js'></script>
+  <script src='<?php echo base_path();?>themes/southampton2/js/uos_tabs.js'></script>
   <style>.uos_tab_pane_title { display: none; }</style>
 
 
@@ -92,6 +92,7 @@
 
 	?>
   </script>	
+  <script type="text/javascript" src="<?php echo base_path();?>themes/southampton2/js/medusa.js"></script>
 </head>
 <body class="<?php print $classes; ?>" <?php print $attributes;?>">
   <?php if ($skip_link_text && $skip_link_anchor): ?>

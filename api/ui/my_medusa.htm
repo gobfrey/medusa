@@ -1,22 +1,35 @@
 
 <h2>Incomplete Modules</h2>
-<table>
-<tbody>
-<repeat group="{{@attempts}}" value="{{@attempt}}">
-	<check if="{{!@attempt.date_completed}}">
-	<tr><td>{{@attempt.module}}</td><td>{{@attempt.date_started}}</td><td><a href="#">Continue this attempt</a></td></tr>
-	</check>
-</repeat>
-</tbody>
-</table>
+<check if="{{count(@uncompleted_modules) > 0}}">
+	<false>
+		<p>You currently have no uncompleted modules</p>
+	</false>
+	<true>
+		<table>
+		<tbody>
+		<repeat group="{{@uncompleted_modules}}" value="{{@attempt}}">
+			<tr><td>{{@attempt.module_name}}</td><td>{{@attempt.date_started}}</td><td><a href="{{ @attempt.url }}">Continue this attempt</a></td></tr>
+		</repeat>
+		</tbody>
+		</table>
+	</true>
+</check>
 
 <h2>Modules Previously Completed</h2>
-<table>
-<tbody>
-<repeat group="{{@attempts}}" value="{{@attempt}}">
-	<check if="{{@attempt.date_completed}}">
-	<tr><td>{{@attempt.module}}</td><td>{{@attempt.date_completed}}</td><td><a href="#">Generate Certificate</a></td></tr>
-	</check>
-</repeat>
-</tbody>
-</table>
+<check if="{{count(@completed_modules) > 0}}">
+	<false>
+		<p>You currently have no completed modules</p>
+	</false>
+	<true>
+		<table>
+		<tbody>
+		<repeat group="{{@completed_modules}}" value="{{@attempt}}">
+			<check if="{{@attempt.date_completed}}">
+			<tr><td>{{@attempt.module_name}}</td><td>{{@attempt.date_completed}}</td><td><a href="#">Generate Certificate</a></td></tr>
+			</check>
+		</repeat>
+		</tbody>
+		</table>
+	</true>
+</check>
+

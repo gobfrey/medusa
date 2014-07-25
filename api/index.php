@@ -3,7 +3,7 @@
 #load the drupal session
 define('DRUPAL_ROOT', dirname(dirname(__DIR__)));
 require_once DRUPAL_ROOT . '/includes/bootstrap.inc';
-drupal_bootstrap(DRUPAL_BOOTSTRAP_SESSION);
+drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL);
 #note that loading the session (to check the user) relies on setting the cookie_domain in settings.php
 global $user;
 
@@ -47,7 +47,32 @@ function my_medusa($f3)
 
 	$attempts = all_user_attempts($f3, $username);
 
-	$f3->set("attempts", $attempts);
+	$uncompleted = array();
+	$completed = array();
+	foreach ($attempts as $attempt)
+	{
+		$attempt_arr = $attempt->cast();
+		$attempt_arr['url'] = '';
+
+		if (@$attempt_arr['date_completed'])
+		{
+			$completed[] = $attempt_arr;
+			continue;		
+		}
+
+
+		if (@$attempt_arr['module_id'])
+		{
+			#generate URL for each module
+			$book_id = $attempt->module_id;
+			$url = $f3->get("drupal_base") ."/".drupal_lookup_path('alias',"node/$book_id"); #drupal API call
+			$attempt_arr['url'] = $url;
+		}
+		$uncompleted[] = $attempt_arr;
+	}
+
+	$f3->set("completed_modules", $completed);
+	$f3->set("uncompleted_modules", $uncompleted);
 	
 	echo(Template::instance()->render("my_medusa.htm"));
 	exit;
@@ -58,7 +83,7 @@ function all_user_attempts($f3, $username)
 {
 	$attempt = new DB\SQL\Mapper($f3->get('db'), $f3->get('module_attempt_table'));
 
-	$attempts = $attempt->find(array('user=?',$username),array('order' => 'module, attempt_number DESC'));
+	$attempts = $attempt->find(array('user=?',$username),array('order' => 'module_id, attempt_number DESC'));
 
 	return $attempts;
 }
