@@ -31,14 +31,45 @@ $db=new DB\SQL(
 );
 $f3->set('db', $db);
 
+#get the key parameters
+$module = $f3->get('REQUEST.module');
+if ($module)
+{
+	$parts = explode(':', $module, 2);
+	$f3->set('module_id', $parts[0]);
+	$f3->set('module_name', $parts[1]);
+}
 
-#loads the current user's current attempt number,
-#creating one if there is no current attempt
-function current_attempt($f3, $module)
+
+function my_medusa($f3)
+{
+	$username = $f3->get('user')->name;
+
+	$attempts = all_user_attempts($f3, $username);
+
+	$f3->set("attempts", $attempts);
+	
+	echo(Template::instance()->render("my_medusa.htm"));
+	exit;
+
+}
+
+function all_user_attempts($f3, $username)
 {
 	$attempt = new DB\SQL\Mapper($f3->get('db'), $f3->get('module_attempt_table'));
 
-	$attempts = $attempt->find(array('user=? and module=?',$f3->get('user')->name, $module),array('order' => 'attempt_number DESC','limit' => 1));
+	$attempts = $attempt->find(array('user=?',$username),array('order' => 'module, attempt_number DESC'));
+
+	return $attempts;
+}
+
+#loads the current user's current attempt number,
+#creating one if there is no current attempt
+function current_attempt($f3, $module_id, $module_name)
+{
+	$attempt = new DB\SQL\Mapper($f3->get('db'), $f3->get('module_attempt_table'));
+
+	$attempts = $attempt->find(array('user=? and module_id=?',$f3->get('user')->name, $module_id),array('order' => 'attempt_number DESC','limit' => 1));
 
 	$attempt_number = 0;
 	if ($attempts)
@@ -58,7 +89,8 @@ function current_attempt($f3, $module)
 
 	$attempt->attempt_number = $attempt_number;
 	$attempt->user = $f3->get('user')->name;
-	$attempt->module = $module;
+	$attempt->module_id = $module_id;
+	$attempt->module_name = $module_name;
 	$attempt->date_started = date("Y-m-d H:i:s");
 	$attempt->date_completed = NULL;
 
@@ -68,28 +100,29 @@ function current_attempt($f3, $module)
 }
 
 
+
 function get_activity_answers($f3)
 {
-	if (!$f3->exists('REQUEST.module') || !$f3->exists('REQUEST.actid'))
+	if (!$f3->exists('module_id') || !$f3->exists('REQUEST.actid'))
 	{
 		$f3->error(400,'A module and an actid must be provided');
 		exit;
 	}
 
-	$module = $f3->get('REQUEST.module');
+	$module_id = $f3->get('module_id');
 	$actid = $f3->get('REQUEST.actid');
-	$attempt_number = current_attempt($f3, $module);
+	$attempt_number = current_attempt($f3, $module_id, $module_name);
 	
 	$answer = new DB\SQL\Mapper($f3->get('db'), $f3->get('answer_table'));
 	
-	$answers = $answer->find(array('user=? and module=? and actid=? and attempt_number=?',$f3->get('user')->name, $module, $actid, $attempt_number),array('order_by' => 'qid,subqid'));
+	$answers = $answer->find(array('user=? and module_id=? and actid=? and attempt_number=?',$f3->get('user')->name, $module_id, $actid, $attempt_number),array('order_by' => 'qid,subqid'));
 
 	return $answers;
 }
 
 function get_answer($f3)
 {
-	$answers = get_activity_answers($f3);
+#	$answers = get_activity_answers($f3);
 
 	#convert to export format and sent to flash
 
@@ -97,10 +130,10 @@ function get_answer($f3)
 
 function save_answer($f3)
 {
-	error_log('SAVE ANSWER CALLED');
-
-	$module = $f3->get('REQUEST.module');
-	if (!$module)
+	$module_id = $f3->get('module_id');
+	$module_name = $f3->get('module_name');
+	$actid = $f3->get('REQUEST.actid');
+	if (!$module_id)
 	{
 		$f3->error(400,'A module number must be provided');
 		exit;
@@ -119,8 +152,9 @@ function save_answer($f3)
 		}
 	}
 
-
-	$answer->attempt_number = current_attempt($f3, $module);
+	$answer->module_id = $module_id;
+	$answer->module_name = $module_name;
+	$answer->attempt_number = current_attempt($f3, $module_id, $module_name);
 	$answer->date = date("Y-m-d H:i:s");
 	$answer->user = $f3->get('user')->name;
 

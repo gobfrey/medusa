@@ -63,7 +63,7 @@ function medusa_embed_build_embed( $matches )
 	$width = $matches[4] ?: 400; #?: will make this default to 400 if no value is supplied
 	$height = $matches[6] ?: 300;
 
-	$module_name = 'ERROR';
+	$module_name = '0:ERROR';
 	if ($node = menu_get_object()) {
 		// Get the nid
 		$node_id = $node->nid;
@@ -71,7 +71,7 @@ function medusa_embed_build_embed( $matches )
 		$book_id = $node->book['bid'];
 	
 		$parent_book = node_load($book_id);
-		$module_name = $parent_book->title;
+		$module_name = $book_id . ':' . $parent_book->title;
 	}
 	$api_url = "$base_url/soton/api";
 
