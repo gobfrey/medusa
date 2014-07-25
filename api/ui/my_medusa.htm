@@ -1,0 +1,22 @@
+
+<h2>Incomplete Modules</h2>
+<table>
+<tbody>
+<repeat group="{{@attempts}}" value="{{@attempt}}">
+	<check if="{{!@attempt.date_completed}}">
+	<tr><td>{{@attempt.module}}</td><td>{{@attempt.date_started}}</td><td><a href="#">Continue this attempt</a></td></tr>
+	</check>
+</repeat>
+</tbody>
+</table>
+
+<h2>Modules Previously Completed</h2>
+<table>
+<tbody>
+<repeat group="{{@attempts}}" value="{{@attempt}}">
+	<check if="{{@attempt.date_completed}}">
+	<tr><td>{{@attempt.module}}</td><td>{{@attempt.date_completed}}</td><td><a href="#">Generate Certificate</a></td></tr>
+	</check>
+</repeat>
+</tbody>
+</table>
