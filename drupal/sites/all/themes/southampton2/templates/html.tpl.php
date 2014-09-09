@@ -91,7 +91,28 @@
 	}
 
 	?>
-  </script>	
+  </script>
+
+  <!--pass bookmarks through on module pages-->
+  <?php
+  	$current_node = menu_get_object();
+	if (property_exists($current_node, 'book'))
+	{
+		$book_id = $current_node->book['bid'];
+  		$parent_book = node_load($book_id);
+?>
+  <script type="text/javascript" >
+      jQuery.ajax({
+      	type: "GET",
+	url : "<?php echo base_path() . 'soton/api/module_bookmark' ?>",
+	data: {
+	  current_node_path: "node/<?php echo $current_node->nid; ?>",
+	  module: "<?php echo $book_id . ':' . $parent_book->title; ?>"
+        }
+      });
+  </script>
+<?php } ?>
+
   <script type="text/javascript" src="<?php echo base_path();?>themes/southampton2/js/medusa.js"></script>
 </head>
 <body class="<?php print $classes; ?>" <?php print $attributes;?>">

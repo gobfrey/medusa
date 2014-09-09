@@ -65,7 +65,13 @@ function my_medusa($f3)
 		{
 			#generate URL for each module
 			$book_id = $attempt->module_id;
-			$url = $f3->get("drupal_base") ."/".drupal_lookup_path('alias',"node/$book_id"); #drupal API call
+
+			$bookmarked_page_path = module_bookmarked_page_path($f3, $book_id, current_attempt($f3, $book_id, $attempt->module_name));
+			error_log($bookmarked_page_path);
+			$url = $f3->get("drupal_base") ."/".drupal_lookup_path('alias',$bookmarked_page_path); #drupal API call
+			error_log($url);
+
+
 			$attempt_arr['url'] = $url;
 		}
 		$uncompleted[] = $attempt_arr;
@@ -108,6 +114,8 @@ function current_attempt($f3, $module_id, $module_name)
 		}
 	}
 
+
+	#may want to break this off into a 'new attempt' function
 	$attempt_number++;
 
 	$attempt = new DB\SQL\Mapper($f3->get('db'), $f3->get('module_attempt_table'));
@@ -135,6 +143,7 @@ function get_activity_answers($f3)
 	}
 
 	$module_id = $f3->get('module_id');
+	$module_name = $f3->get('module_name');
 	$actid = $f3->get('REQUEST.actid');
 	$attempt_number = current_attempt($f3, $module_id, $module_name);
 	
@@ -147,14 +156,77 @@ function get_activity_answers($f3)
 
 function get_answer($f3)
 {
-#	$answers = get_activity_answers($f3);
+	$answers = get_activity_answers($f3);
 
-	#convert to export format and sent to flash
+	$sxe = new SimpleXMLElement('<eSDAnswerList/>');
+	foreach ($answers as $answer)
+	{
+		$answer_xml = $sxe->addChild('Answer');
 
+		$answer_xml->addChild( 'UserAnswerID', (@$answer['id'] ?: -1) );
+		$answer_xml->addChild('SessionID', (@$answer[''] ?: -1) );
+		$answer_xml->addChild('ActivityID', (@$answer['actid'] ?: -1) );
+		$answer_xml->addChild('QuestionID', (@$answer['qid'] ?: -1) );
+		$answer_xml->addChild('SubQuestionID', (@$answer['subqid'] ?: -1) );
+		$answer_xml->addChild('UserAnswer', (@$answer['ans'] ?: -1) );
+		$answer_xml->addChild('Score', (@$answer['no_idea_where_this_comes_from'] ?: -1) );
+		$answer_xml->addChild('SCompleted', (@$answer['finishact'] ?: -1) );
+		$answer_xml->addChild('SEndTime', (@$answer['date'] ?: -1) );
+	}
+
+#	error_log('returning from get_answers');
+#	error_log($sxe->asXML());
+
+	echo $sxe->asXML();
+	exit;
 }
+
+
+#return the node of the bookmarked page in the module, or the module ID.
+function module_bookmarked_page_path($f3, $module_id, $attempt_number)
+{
+	$user = $f3->get('user')->name;
+	
+	$bookmark = new DB\SQL\Mapper($f3->get('db'), $f3->get('bookmark_table'));
+	$bookmark->load(array('user=? AND module_id=? AND attempt_number=?', $user, $module_id, $attempt_number));
+
+	if ($bookmark->current_node)
+	{
+		return $bookmark->current_node;
+	}
+	return 'node/' . $module_id;
+}
+
+#saves the place of a user in a module for use in the continue link
+function module_bookmark($f3)
+{
+	$module_id = $f3->get('module_id');
+	$module_name = $f3->get('module_name');
+	$user = $f3->get('user')->name;
+	$current_node = $f3->get('REQUEST.current_node_path');
+
+	if (!$module_id || !$user || !$current_node || !$module_name)
+	{
+		$f3->error(400,'A missing args');
+		exit;
+	}
+
+	$bookmark = new DB\SQL\Mapper($f3->get('db'), $f3->get('bookmark_table'));
+	$bookmark->load(array('user=? AND module_id=?', $user, $module_id));
+
+	$bookmark->attempt_number = current_attempt($f3, $module_id, $module_name);
+	$bookmark->user = $user;
+	$bookmark->module_id = $module_id;
+	$bookmark->current_node = $current_node;
+
+	$bookmark->save();
+}
+
+
 
 function save_answer($f3)
 {
+#do we need to check for existance of answers?
 	$module_id = $f3->get('module_id');
 	$module_name = $f3->get('module_name');
 	$actid = $f3->get('REQUEST.actid');
