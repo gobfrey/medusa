@@ -107,7 +107,7 @@
 	url : "<?php echo base_path() . 'soton/api/module_bookmark' ?>",
 	data: {
 	  current_node_path: "node/<?php echo $current_node->nid; ?>",
-	  module: "<?php echo $book_id . ':' . $parent_book->title; ?>"
+	  module: "<?php echo $book_id ?>"
         }
       });
   </script>

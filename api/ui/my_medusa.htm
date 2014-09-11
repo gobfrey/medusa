@@ -25,7 +25,7 @@
 		<tbody>
 		<repeat group="{{@completed_modules}}" value="{{@attempt}}">
 			<check if="{{@attempt.date_completed}}">
-			<tr><td>{{@attempt.module_name}}</td><td>{{@attempt.date_completed}}</td><td><a href="#">Generate Certificate</a></td></tr>
+			<tr><td>{{@attempt.module_name}}</td><td>{{@attempt.date_completed}}</td><td><a href="{{ @attempt.url }}">Review this attempt</a></td><td><a href="#">Generate Certificate</a></td></tr>
 			</check>
 		</repeat>
 		</tbody>

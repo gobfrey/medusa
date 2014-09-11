@@ -50,7 +50,7 @@ function medusa_embed_filter($text) {
   $text = ' ' . $text . ' ';
   //embed tag must look like [embed:filname.ext moduleID=1 activityID=2 width=100 height=100] 
   //width and height are mandatory and their order is defined
-  $text = preg_replace_callback("/\[embed:([^\]\s]+)\s*[^\]]*activityID=(\d+)\s*(width=(\d+))?\s*(height=(\d+)\])?/", 'medusa_embed_build_embed', $text);
+  $text = preg_replace_callback("/\[embed:([^\]\s]+)\s*(activityID=(\d+))?\s*(width=(\d+))?\s*(height=(\d+))?]/", 'medusa_embed_build_embed', $text);
   return $text;
 }
 
@@ -59,11 +59,12 @@ function medusa_embed_build_embed( $matches )
 	global $base_url;
 
 	$filename = $matches[1];
-	$activity_id = $matches[2];
-	$width = $matches[4] ?: 400; #?: will make this default to 400 if no value is supplied
-	$height = $matches[6] ?: 300;
+	$activity_id = @$matches[3];
+	$width = @$matches[5] ?: 400; #?: will make this default to 400 if no value is supplied
+	$height = @$matches[7] ?: 300;
 
 	$module_name = '0:ERROR';
+	$module_title = "MODULE TITLE NOT FOUND";
 	if ($node = menu_get_object()) {
 		// Get the nid
 		$node_id = $node->nid;
@@ -71,8 +72,22 @@ function medusa_embed_build_embed( $matches )
 		$book_id = $node->book['bid'];
 	
 		$parent_book = node_load($book_id);
-		$module_name = $book_id . ':' . $parent_book->title;
+
+		$module_name = $book_id; //. ':' . $parent_book->title;
+		$module_title = $parent_book->title;
 	}
+	
+	if(preg_match("/^modulesurvey/", $filename))
+	{
+		global $user;
+		return "<p class='module-survey'><a href='https://www.isurvey.soton.ac.uk/start.php?id=12966&qid655171=".urlencode($user->name)."&qid655172=".urlencode($module_title)."'>$module_title Module Evaluation Survey</a></p>";
+	}
+
+	if(preg_match("/^completioncheck/", $filename))
+	{
+		return "<p class='module-completion'>We are required to inform the GMC of staff development activity in our annual return. Please tick the box to confirm that you have completed this online module. This will also enable you to print out a certificate of completion. <input type='checkbox' data-module='$module_name'></p>";
+	}
+
 	$api_url = "$base_url/soton/api";
 
 	$common_flash_vars = array(
@@ -105,7 +120,7 @@ function medusa_embed_build_embed( $matches )
 		$common_flash_args_string .= urlencode($v);
 	}
 
-	if(preg_match("/.swf$/", $matches[1]))
+	if(preg_match("/.swf$/", $filename))
 	{
 		$embed_tags['src'] = $base_url . '/sites/default/files/' . $filename;
 		$embed_tags['FlashVars'] = 'activityID=' . $activity_id . $common_flash_args_string;

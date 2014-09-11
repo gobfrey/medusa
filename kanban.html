@@ -81,7 +81,7 @@
 				description:"Add the function to read answers back from the API",
 				assigned:"Adam",
 				points:2,
-				status:"In Progress",
+				status:"Completed",
 			},
 			
 		]},
@@ -97,7 +97,7 @@
 			},
 			{
 				description:"Make a script to do automatic linking though the fast track route of the module",
-				assigned:"",
+				assigned:"Patrick",
 				points:2,
 				status:"Backlog",
 			},
@@ -129,7 +129,7 @@
 				description:"Build a screen similar to 'my medusa'",
 				assigned:"Adam",
 				points:2,
-				status:"Backlog",
+				status:"Completed",
 			},
 			{
 				description:"Create script which generates certificates",
@@ -144,8 +144,8 @@
 		priority:"Must",
 		tasks: [
 			{
-				assigned:"",
-				description:"SOMETHING MUST BE DONE",
+				assigned:"Adam",
+				description:"Through My MEDUSA, medical instructors need to be able to see all attempts on modeuls and print past certificates",
 				points:2,
 				status:"Backlog",
 			},
@@ -180,9 +180,9 @@
 		tasks: [
 			{
 				description:"Create a tickbox which registers this module as completed by you.",
-				assigned:"",
+				assigned:"Patrick",
 				points:2,
-				status:"Backlog",
+				status:"In Progress",
 			},
 			
 		]},
@@ -191,10 +191,10 @@
 		priority:"Must",
 		tasks: [
 			{
-				description:"DO SOMETHING",
-				assigned:"",
+				description:"Through My MEDUSA, modules that have been partially completed should be shown to allow progress to be resumed",
+				assigned:"Adam",
 				points:2,
-				status:"Backlog",
+				status:"Completed",
 			},
 			
 		]},
@@ -203,10 +203,10 @@
 		priority:"Must",
 		tasks: [
 			{
-				description:"Make log in direct to the 'My Medusa' page",
-				assigned:"",
+				description:"Send user to the MyMedusa page on log-in",
+				assigned:"Patrick",
 				points:1,
-				status:"Backlog",
+				status:"Completed",
 			},
 			
 		]},
@@ -218,14 +218,14 @@
 				description:"Build a survey in iSurvey",
 				assigned:"Patrick",
 				points:2,
-				status:"Backlog",
+				status:"Completed",
 			},
 			
 			{
 				description:"Create a link to iSurvey with params for the module code prefiled",
 				assigned:"Patrick",
 				points:1,
-				status:"Backlog",
+				status:"Completed",
 			},
 		]},
 		{ storyid:"12",
@@ -234,9 +234,9 @@
 		tasks: [
 			{
 				description:"iSurvey report tool",
-				assigned:"",
+				assigned:"Patrick",
 				points:1,
-				status:"Backlog",
+				status:"Completed",
 			},
 			
 		]},
@@ -270,7 +270,7 @@
 		tasks: [
 			{
 				description:"Create a report the shows what a specific user filled in a on a particular module",
-				assigned:"",
+				assigned:"Adam",
 				points:2,
 				status:"Backlog",
 			},
@@ -282,36 +282,30 @@
 		tasks: [
 			{
 				description:"Modules should have an active and inactive state, inactive modules are still accessible to admins",
-				assigned:"",
+				assigned:"Patrick",
 				points:2,
-				status:"Backlog",
-			},
-			{
-				description:"Modules need an assignable course code which can be changed when the module goes live",
-				assigned:"",
-				points:2,
-				status:"Backlog",
+				status:"Completed",
 			},
 		]},
 		{ storyid:"17",
-		description:"As a course administrator I need to be able to make minor modification to course material (including reading lists) in order to keep courses up to date.",
+		description:"As a course administrator I need to be able to make modifications to course material (including reading lists) in order to keep courses up to date.",
 		priority:"Must",
 		tasks: [
 			{
-				description:"DO SOMETHING",
-				assigned:"",
-				points:2,
-				status:"Backlog",
+				description:"Test that changes can be rolled back",
+				assigned:"Patrick",
+				points:1,
+				status:"Completed",
 			},
 			
 		]},
 		{ storyid:"18",
 		description:"As a course administrator I need to be able to preview change sets before they are made live to allow significant modification to a course when it is being redesigned",
-		priority:"Must",
+		priority:"Could",
 		tasks: [
 			{
 				description:"Courses need to be able to be duplicated from a previous course?",
-				assigned:"",
+				assigned:"Patrick",
 				points:2,
 				status:"Backlog",
 			},
@@ -322,10 +316,10 @@
 		priority:"Must",
 		tasks: [
 			{
-				description:"Courses need to be able to be duplicated from a previous course?",
-				assigned:"",
+				description:"See story 18",
+				assigned:"Adam",
 				points:2,
-				status:"Backlog",
+				status:"Completed",
 			},
 			
 		]},
@@ -335,9 +329,9 @@
 		tasks: [
 			{
 				description:"see story 17",
-				assigned:"",
+				assigned:"Adam",
 				points:2,
-				status:"Backlog",
+				status:"Completed",
 			},
 			
 		]},
@@ -358,7 +352,13 @@
 		priority:"Must",
 		tasks: [
 			{
-				description:"DO SOMETHING",
+				description:"Create Documentation for course creator / administrator",
+				assigned:"",
+				points:2,
+				status:"Backlog",
+			},
+			{
+				description:"Create Documentation for flash resource creator",
 				assigned:"",
 				points:2,
 				status:"Backlog",
@@ -528,7 +528,10 @@
 			document.tasks[task.assigned][task.status].push(task);
 			document.points.total += task.points;
 			document.points.status[task.status] += task.points;
-			document.points.person[task.assigned] += task.points;
+			if( task.status == "Backlog" || task.status == "In Progress")
+			{
+				document.points.person[task.assigned] += task.points;
+			}
 		}
 
 	}
