@@ -1,5 +1,68 @@
 <?php
 
+function get_all_user_answer($f3)
+{
+	dump_request($f3);
+}
+
+function medusa_report($f3)
+{
+
+}
+
+
+function medusa_certificate($f3)
+{
+	$module_id = $f3->get('module_id');
+	$attempt_number = _get_module_attempt_number($f3, $module_id);
+
+	if (!$module_id || !$attempt_number)
+	{
+		$f3->error(400,'A module id and attempt number must be provided');
+		exit;
+	}
+
+	$attempt = new DB\SQL\Mapper($f3->get('db'), $f3->get('module_attempt_table'));
+	$attempt->load(array('user=? AND module_id=? AND attempt_number=?', $f3->get('user')->name, $module_id, $attempt_number));
+
+
+	if ($attempt->date_completed)
+	{
+		$f3->set('css_root', $f3->get('drupal_base') . '/themes/southampton2/medusa_certificate/');
+		$f3->set('img_root', $f3->get('drupal_base') . '/themes/southampton2/medusa_certificate/');
+
+		$f3->set('user_name', $f3->get('user')->name);
+		$f3->set('date_completed', date('d F Y',strtotime($attempt->date_completed)));
+
+		echo(Template::instance()->render("certificate.htm"));
+		exit;
+	}
+	else
+	{
+		echo "Note Completed";
+	}
+}
+
+
+function medusa_activity($f3)
+{
+	$date_from = '01/01/2009';
+	$date_to = date("d/m/Y"); 
+
+	if ($f3->exists('REQUEST.date_from'))
+	{
+		$date_from = $f3->get('REQUEST.date_from');
+	}
+	if ($f3->exists('REQUEST.date_to'))
+	{
+		$date_from = $f3->get('REQUEST.date_from');
+	}
+
+
+
+}
+
+
 #redirects to a module page after having reset the session attempt number
 function module_redirect($f3)
 {
@@ -88,11 +151,6 @@ function save_answer($f3)
 function session_exists($f3)
 {
 	#should return false if the user is not logged in.  This is handled with a 403 before routing if there's no user.
-}
-
-function get_all_user_answer($f3)
-{
-	dump_request($f3);
 }
 
 function clear_answer($f3)
@@ -199,6 +257,7 @@ function my_medusa($f3)
 		$attempt_number = $attempt->attempt_number;
 
 		$attempt_arr['url'] = $f3->get("drupal_base") ."/soton/api/module_redirect?module=$book_id&attempt_number=$attempt_number";
+		$attempt_arr['certificate_url'] = $f3->get("drupal_base") ."/soton/api/medusa_certificate?module=$book_id&attempt_number=$attempt_number";
 
 		if (@$attempt_arr['date_completed'])
 		{

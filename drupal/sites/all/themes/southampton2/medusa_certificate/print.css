@@ -1,0 +1,86 @@
+﻿
+#certificateLogo img{
+	display: block;
+	position: absolute;
+	margin: 0;
+	height: 92px;
+	top: 0px;
+	right: 0px;
+	/*background: url(/corporate/images/bg_logo_small.png) no-repeat right 50%;
+	height: 93px;*/
+}
+
+/*#content a:link:after, #content a:visited:after {
+  content: "" !important;
+}*/
+
+#container h2{
+	display:none !important;
+}
+
+#title{
+	color: #014359 !important;
+	font-size: 160% !important;
+	font-weight:bold;
+}
+
+#title2{
+	color: #039BC0 !important;
+	font-size: 140% !important;
+	font-weight:bold;
+}
+
+#title3{
+	font-size: 130% !important;
+	font-weight:bold;
+}
+
+#certificate{
+	text-align:center;
+	border:thin #014359 solid;	
+	padding:2em;	
+	font-size: 120% !important;	
+	background-image:url('../css/medusaLogo.jpg');
+	background-repeat:no-repeat;
+	background-position:right bottom;
+}
+
+#name{
+	color: #014359 !important;
+	font-size: 160% !important;
+	font-weight:bold;
+	padding-top:2em;
+	padding-bottom:3em;	
+}
+
+#author1{
+	float:left;
+	text-align:left;
+	padding-left:4em;
+	padding-top:8em;
+}
+
+#author2{
+	float:right;
+	text-align:left;
+	padding-right:4em;
+	padding-top:8em;
+}
+
+#jobTitle{
+	font-size: 90% !important;
+	margin-top:-1.2em !important;		
+}
+
+#courseDate{
+	font-size: 130% !important;
+	font-weight:bold;
+	margin:5em;
+	border:thin #014359 solid;
+}
+
+#credits{
+	clear:both;
+	padding-top:3em !important;
+	font-size: 80% !important;
+}

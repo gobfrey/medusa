@@ -1,0 +1,15 @@
+.book-navigation .page-next, .book-navigation .page-previous {
+	display: inline !important;
+	float: none !important;
+	font-size: 130%;
+}
+
+.book-navigation .page-links {
+	text-align: right;
+	border-top: 0;
+	border-bottom: 0;
+}
+
+.fast-track-surround {
+	float:right;
+}

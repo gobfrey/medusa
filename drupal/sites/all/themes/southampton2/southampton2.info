@@ -70,6 +70,7 @@ stylesheets[all][]        = css/soton/navigation.css
 stylesheets[all][]        = css/soton/sia_webpage.css
 stylesheets[all][]        = css/soton/uos_tabs.css
 stylesheets[all][]        = css/soton/fpas.css
+stylesheets[all][]        = css/soton/medusa.css
 stylesheets[print][]      = css/soton/print.css
 stylesheets[print][]      = css/soton/fpas_print.css
 

@@ -21,13 +21,17 @@ function fast_track($f3)
 			continue;
 		}
 		$node = node_load($node_id);
-		print_r($node);exit;
+		#print_r($node);exit;
 		if($node->type != "book")
 		{
 			continue;
 		}
 
-		
+		if(preg_match('#\[embed:completioncheck#', $node->body['und'][0]['value']))
+		{
+			# final page is the one where you tick to say its complete
+			$final_node = $node;
+		}
 
 		$fast_track = @field_view_field('node', $node, 'field_fast_track');
 		if($fast_track["#items"][0]["value"])
@@ -36,7 +40,7 @@ function fast_track($f3)
 		}
 	}
 	#if there is nothing left on the fast track go to the last page of the module
-	$f3->reroute($f3->get("drupal_base")."/node/".$node->nid);
+	$f3->reroute($f3->get("drupal_base")."/node/".$final_node->nid);
 }
 
 function unpack_book_nodes($nodes, $node_ids=array())

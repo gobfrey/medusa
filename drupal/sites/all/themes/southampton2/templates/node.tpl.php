@@ -104,11 +104,16 @@
       <?php endif; ?>
     </header>
   <?php endif; ?>
-<h2> FOOOSNFASKDASL</h2>
   <?php
     // We hide the comments and links now so that we can render them later.
     hide($content['comments']);
     hide($content['links']);
+    print render($content["book_navigation"]);
+    if($node->type == "book")
+    {
+        global $base_url;
+        print "\n<div class='fast-track-surround'><a href='$base_url/soton/api/fast_track?current_node=".$node->nid."'><img src='$base_url/soton/fastTrack.png' alt='Fast Track' /></a></div>\n";
+    }
     print render($content);
   ?>
 

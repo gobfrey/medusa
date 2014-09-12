@@ -1,0 +1,320 @@
+﻿<!--CSS for video page in the BM curriculum - programmes-->
+#videoContent{
+	float:left;
+	padding:10px;
+	background-color:#eee
+}
+
+.videoImage{
+	float:left;
+	margin:7px 19px -10px 10px;
+	display:inline; 					
+}
+
+.videoImage Img{
+	border: #014359 solid 2px;			
+}
+<!--CSS for video page in the BM curriculum - programmes-->
+
+input.btn {
+    border: none;
+    background: url('submit.png') no-repeat top left;
+    padding: 0px 20px;
+	width:56px;
+	height:22px;
+}
+input.btn:hover {
+    border: none;
+    background: url('submit2.png') no-repeat top left;
+    padding: 0px 20px;
+}
+
+div#footer p {background-color: #ccc; }
+
+#emphasised {
+	background-color:#a6d3d3;
+}
+
+#reflect {
+	background-color:#eeeeee;
+}
+
+th.header {
+	background-color:#C1D181;
+	border: none;
+	border-top: thin #8F9E94 solid;
+	border-bottom: thin #8F9E94 solid;
+}
+					
+.pdf {
+	background-image:url('../images/pdf.png'); 
+	background-repeat:no-repeat; 
+	height: 65px; 
+	padding-top: 20px; 
+	padding-left: 80px;
+}
+
+.web {
+	background-image:url('../images/web.png'); 
+	background-repeat:no-repeat; 
+	height: 65px; 
+	padding-top: 20px; 
+	padding-left: 80px;
+}
+
+.video{	
+	/*float:right;
+ 	margin-left:25px; 
+ 	margin-top:45px;*/
+ 	position:absolute;
+ 	right: 30px;
+ 	top: 215px;
+ }
+
+.flashpadding { margin: 2em; }
+
+.film { margin: 1.5em;display:inline; }
+
+.film img { border: #014359 solid 2px;display:inline; }
+
+#content #mainContent h3 { padding-bottom: 0.5em; margin-bottom: 0.5em; }
+
+#compendiumParagraph{
+	height:213px !important;
+  	height:213px;
+	/*overflow:auto;*/
+	width: 325px; 
+	overflow: auto;
+}
+
+#videoParagraph{
+	/*overflow:auto;*/
+	width: 325px; 
+	overflow: auto;
+}
+
+
+#compendiumText h3{
+	margin-bottom:0;
+	background:#a1b5bb;
+	padding: 5px 15px;
+	font-family:Georgia, serif;
+	font-weight:bold;
+}
+
+#videoParagraph h3{
+	margin-bottom:0;
+	background:#a1b5bb;
+	padding: 5px 15px;
+	font-family:Georgia, serif;
+	font-weight:bold;
+}
+
+
+
+div.card {
+	background:#e6e6e6;
+	border: none;
+	margin:none;
+	margin-top:-10px;
+}
+
+div#content ul#compendiumTabs li{
+	width:71px;
+	margin-right: 3px;
+}
+div#content ul#compendiumTabs li a {
+	font-family:verdana!important;
+	font-size : 0.55em;
+	padding: 5px;
+	min-height:30px;
+	text-align:center;
+	border:1px solid #ccc;
+}
+div#content ul#compendiumTabs li.active a{
+	min-height:30px;
+	margin-top: 8px;
+	border-right:1px solid #ccc;/*solves the "appearance / Behaviour" glitch.*/
+	border-bottom:1px solid #ccc;
+}
+.films { background-color:black; }
+
+.compendium {
+	float:left;
+	font-size:70%;
+}
+
+.compendium-active {
+	float:left;
+	font-size:70%;
+}
+
+
+.compendium .end {
+	background-image:url('../images/right.png');
+	background-repeat:no-repeat;
+	height: 39px;
+	width: 11px;
+	float: left;
+}
+
+.compendium .start {
+	background-image:url('../images/left.png');
+	background-repeat:no-repeat;
+	height: 39px;
+	width: 7px;
+	float: left;
+}
+
+.compendium .center {
+	background-image:url('../images/center.png');
+	background-repeat:repeat-x;
+	padding-top: 6px;
+	height: 39px;
+	float: left;
+}
+
+.compendium-active {
+	float:left;
+}
+
+.compendium-active .end {
+	background-image:url('../images/right_active.png');
+	background-repeat:no-repeat;
+	height: 39px;
+	width: 14px;
+	float: left;
+}
+
+.compendium-active .start {
+	background-image:url('../images/left_active.png');
+	background-repeat:no-repeat;
+	height: 39px;
+	width: 9px;
+	float: left;
+
+}
+
+.compendium-active .center {
+	background-image:url('../images/center_active.png');
+	background-repeat:repeat-x;
+	padding-top: 8px;
+	height: 39px;
+	float: left;
+}
+
+.compendium-active .center a, .compendium .center a { text-decoration:none; }
+
+.buttons {
+	clear:both;
+}
+
+.button-active {
+	background-image:url('../images/behind.png');
+		background-repeat:no-repeat;	
+	width: 70px;
+	height: 33px;
+	float: left;	
+	padding: 2px;
+	font-size:70%;
+	text-align:center;
+	vertical-align: middle;
+}
+
+.button-normal {
+	background-image:url('../images/active.png');	
+	background-repeat:no-repeat;
+	width: 70px;
+	height: 33px;
+	float: left;	
+	padding: 2px;
+	font-size:70%;
+	text-align:center;
+		vertical-align: middle;
+}
+
+.button-behind {
+	background-image:url('../images/normal.png');	
+	background-repeat:no-repeat;
+	padding: 2px;
+	width: 70px;
+	height: 33px;
+	float: left;	
+	text-align:center;
+	font-size:70%;
+		vertical-align: middle;
+
+}
+
+/*This is the css for the certificate*/
+#certificateLogo img{
+	display: none;
+}
+
+#title{
+	color: #014359 !important;
+	font-size: 160% !important;
+	font-weight:bold;
+}
+
+#title2{
+	color: #039BC0 !important;
+	font-size: 140% !important;
+	font-weight:bold;
+}
+
+#title3{
+	font-size: 130% !important;
+	font-weight:bold;
+}
+
+#certificate{
+	text-align:center;
+	border:thin #014359 solid;	
+	padding:2em;	
+	font-size: 120% !important;	
+	background:url('medusaLogo.png') no-repeat bottom right;
+	/*background:url('../images/medusaLogo.jpg') no-repeat bottom right;
+	height: 1%;*/
+}
+
+
+#name{
+	color: #014359 !important;
+	font-size: 160% !important;
+	font-weight:bold;
+	padding-top:2em;
+	padding-bottom:3em;	
+}
+
+#author1{
+	float:left;
+	text-align:left;
+	padding-left:4em;
+	padding-top:8em;
+}
+
+#author2{
+	float:right;
+	text-align:left;
+	padding-right:4em;
+	padding-top:8em;
+}
+
+#jobTitle{
+	font-size: 90% !important;
+	margin-top:-1.2em !important;		
+}
+
+#courseDate{
+	font-size: 130% !important;
+	font-weight:bold;
+	margin:5em;
+	border:thin #014359 solid;
+}
+
+#credits{
+	clear:both;
+	padding-top:3em !important;
+	font-size: 80% !important;
+}
