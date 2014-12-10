@@ -1,0 +1,409 @@
+.ff_block {
+	display:block !important;
+}
+.ff_component {
+	display: block;
+}
+.ff_description {
+	margin-bottom: 0.5em;
+}
+.ff_form textarea {
+	display: block;
+	width: 95%;
+}
+.ff_combo {
+	display: block;
+}
+.ff_combo .ff_field {
+	display: inline-block;
+	padding-right: 1em;
+}
+.ff_combo .ff_field .ff_title {
+	display: inline-block;
+}
+.ff_field .ff_title {
+	padding-right: 0.5em;
+}
+
+.ff_checkbox_option {
+	display: inline-block;
+	vertical-align: top;
+	padding-bottom: 0.5em;
+	width: 40%;
+}
+
+
+.ff_section h2.ff_title {
+	border-radius: 10px;
+	box-shadow: 10px 10px 8px #ccc;
+	background-color: #eef;
+	border: solid 2px #99e;
+	padding: 0.2em;
+	margin-top: 2em;
+	margin-bottom: 1em;
+}
+.ff_section .ff_section .ff_component {
+	margin-left: 1em;
+	margin-right: 1em;
+}
+.ff_section .ff_section .ff_component .ff_component{
+	border: none;
+	margin: 0;
+}
+.ff_select .ff_radio_option {
+	padding-right: 10px;
+}
+
+/* Lists */
+
+.ff_list .ff_item_number {
+	padding: 8px 5px 5px 5px;
+	width: 40px;
+	float:left;
+}
+.ff_list .ff_item_remove {
+	width: 40px;
+	padding: 8px 5px 5px 5px;
+	float: right;
+}
+.ff_even { 
+	background-color: #eef;
+	border-top: solid 1px #eef;
+}
+.ff_odd { 
+	background-color: #eee;
+	border-top: solid 2px #eee
+}
+.ff_item_value {
+	display: block;
+	padding: 5px 50px 5px 50px;
+}
+
+
+.ff_item { 
+	border-bottom: solid 1px #999;
+	margin: 0px;
+	clear: both;
+}
+.ff_first { 
+	border-top: solid 1px #999;
+}
+
+.ff_list .ff_combo {
+	padding-left: 40px
+	display: block;
+}
+.ff_list { 
+	margin-bottom: 1em;
+}
+
+
+.ff_list ul li {
+	list-style: none;
+	padding: 0px;
+	margin: 0px;
+	min-height: 50px;
+}
+.ff_list ul {
+	list-style: none;
+	padding: 0px;
+	margin: 0px;
+}
+.ff_item_remove {
+	cursor: pointer;
+}
+.ff_item_add img {
+	vertical-align: text-bottom;
+	width: 12px;
+}
+.ff_item_add {
+	cursor: pointer;
+	border-radius: 10px;
+	background-color: #eef;
+	border: solid 2px #99e;
+	padding: 2px 6px 2px 6px;
+	margin-top: 5px;
+	min-height: 14px;
+	display: inline-block;
+	font-size: 12px;
+	color: #669;
+}
+
+
+/* horizontal field */
+/*
+.ff_horizontal {
+	display: block;
+}
+
+
+.ff_combo_vertical .ff_component {
+	display: block;
+}
+.ff_combo_vertical .ff_component .ff_title {
+	width: 20%;
+	text-align: right;
+}
+.ff_combo_vertical .ff_component .ff_input_text {
+	width: 70%;
+}
+*/
+
+.ff_input_submit {
+    background-color: #EEEEFF;
+    border: 2px solid #9999EE;
+    border-radius: 10px 10px 10px 10px;
+    color: #666699;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 12px;
+    margin-top: 1em;
+    min-height: 14px;
+    padding: 2px 6px;
+}	
+	
+
+	
+/* Minimal bits of bootstrap CSS to make the timepicker work without requiring all of bootstrap */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 160px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  font-size: 14px;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  -webkit-background-clip: padding-box;
+          background-clip: padding-box;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, .15);
+  border-radius: 4px;
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+          box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}
+.dropdown-menu.pull-right {
+  right: 0;
+  left: auto;
+}
+.dropdown-menu .divider {
+  height: 1px;
+  margin: 9px 0;
+  overflow: hidden;
+  background-color: #e5e5e5;
+}
+.dropdown-menu > li > a {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.42857143;
+  color: #333;
+  white-space: nowrap;
+}
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+  color: #262626;
+  text-decoration: none;
+  background-color: #f5f5f5;
+}
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus {
+  color: #fff;
+  text-decoration: none;
+  background-color: #428bca;
+  outline: 0;
+}
+.dropdown-menu > .disabled > a,
+.dropdown-menu > .disabled > a:hover,
+.dropdown-menu > .disabled > a:focus {
+  color: #777;
+}
+.dropdown-menu > .disabled > a:hover,
+.dropdown-menu > .disabled > a:focus {
+  text-decoration: none;
+  cursor: not-allowed;
+  background-color: transparent;
+  background-image: none;
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+
+
+[class^="icon-"],
+[class*=" icon-"] {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-top: 1px;
+  *margin-right: .3em;
+  line-height: 14px;
+  vertical-align: text-top;
+  background-image: url("glyphicons-halflings.png");
+  background-position: 14px 14px;
+  background-repeat: no-repeat;
+}
+
+.icon-chevron-up {
+  background-position: -288px -120px;
+}
+
+.icon-chevron-down {
+  background-position: -313px -119px;
+}
+
+/* End of partial bootstrap CSS */
+
+/*!
+ * Timepicker Component for Twitter Bootstrap
+ *
+ * Copyright 2013 Joris de Wit
+ *
+ * Contributors https://github.com/jdewit/bootstrap-timepicker/graphs/contributors
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+.bootstrap-timepicker {
+  position: relative;
+}
+.bootstrap-timepicker.pull-right .bootstrap-timepicker-widget.dropdown-menu {
+  left: auto;
+  right: 0;
+}
+.bootstrap-timepicker.pull-right .bootstrap-timepicker-widget.dropdown-menu:before {
+  left: auto;
+  right: 12px;
+}
+.bootstrap-timepicker.pull-right .bootstrap-timepicker-widget.dropdown-menu:after {
+  left: auto;
+  right: 13px;
+}
+.bootstrap-timepicker .add-on {
+  cursor: pointer;
+}
+.bootstrap-timepicker .add-on i {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+}
+.bootstrap-timepicker-widget.dropdown-menu {
+  padding: 4px;
+}
+.bootstrap-timepicker-widget.dropdown-menu.open {
+  display: inline-block;
+}
+.bootstrap-timepicker-widget.dropdown-menu:before {
+  border-bottom: 7px solid rgba(0, 0, 0, 0.2);
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  content: "";
+  display: inline-block;
+  position: absolute;
+}
+.bootstrap-timepicker-widget.dropdown-menu:after {
+  border-bottom: 6px solid #FFFFFF;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  content: "";
+  display: inline-block;
+  position: absolute;
+}
+.bootstrap-timepicker-widget.timepicker-orient-left:before {
+  left: 6px;
+}
+.bootstrap-timepicker-widget.timepicker-orient-left:after {
+  left: 7px;
+}
+.bootstrap-timepicker-widget.timepicker-orient-right:before {
+  right: 6px;
+}
+.bootstrap-timepicker-widget.timepicker-orient-right:after {
+  right: 7px;
+}
+.bootstrap-timepicker-widget.timepicker-orient-top:before {
+  top: -7px;
+}
+.bootstrap-timepicker-widget.timepicker-orient-top:after {
+  top: -6px;
+}
+.bootstrap-timepicker-widget.timepicker-orient-bottom:before {
+  bottom: -7px;
+  border-bottom: 0;
+  border-top: 7px solid #999;
+}
+.bootstrap-timepicker-widget.timepicker-orient-bottom:after {
+  bottom: -6px;
+  border-bottom: 0;
+  border-top: 6px solid #ffffff;
+}
+.bootstrap-timepicker-widget a.btn,
+.bootstrap-timepicker-widget input {
+  border-radius: 4px;
+}
+.bootstrap-timepicker-widget table {
+  width: 100%;
+  margin: 0;
+}
+.bootstrap-timepicker-widget table td {
+  text-align: center;
+  height: 30px;
+  margin: 0;
+  padding: 2px;
+}
+.bootstrap-timepicker-widget table td:not(.separator) {
+  min-width: 30px;
+}
+.bootstrap-timepicker-widget table td span {
+  width: 100%;
+}
+.bootstrap-timepicker-widget table td a {
+  border: 1px transparent solid;
+  width: 100%;
+  display: inline-block;
+  margin: 0;
+  padding: 8px 0;
+  outline: 0;
+  color: #333;
+}
+.bootstrap-timepicker-widget table td a:hover {
+  text-decoration: none;
+  background-color: #eee;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  border-color: #ddd;
+}
+.bootstrap-timepicker-widget table td a i {
+  margin-top: 2px;
+  font-size: 18px;
+}
+.bootstrap-timepicker-widget table td input {
+  width: 25px;
+  margin: 0;
+  text-align: center;
+}
+.bootstrap-timepicker-widget .modal-content {
+  padding: 4px;
+}
+@media (min-width: 767px) {
+  .bootstrap-timepicker-widget.modal {
+    width: 200px;
+    margin-left: -100px;
+  }
+}
+@media (max-width: 767px) {
+  .bootstrap-timepicker {
+    width: 100%;
+  }
+  .bootstrap-timepicker .dropdown-menu {
+    width: 100%;
+  }
+}
+
+/* End of Bootstrap timepicker CSS */

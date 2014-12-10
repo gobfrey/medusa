@@ -1,0 +1,37 @@
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.8.3.js"></script>
+<script src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+
+<script type="text/javascript" src="{{ @drupal_base }}/soton/api/lib/floraform/html_assets/floraform/ff.js"></script>
+
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" />
+<link rel="stylesheet" href="{{ @drupal_base }}/soton/api/lib/floraform/html_assets/floraform/ff.css" />
+
+{{ @form->render(@form_values); }}
+
+<h2>Person Report</h2>
+<p>Download as <a href="{{ @report_csv_url }}">CSV</a>.
+
+<check if="{{ @report_report == 'person' }}">
+	<repeat group="{{@report_data}}" key="{{ @module_name }}" value="{{@module_data}}">
+	<h2>{{@module_name}} ({{count(@module_data)}})</h2>
+	<table>
+		<tr>
+		<repeat group="{{ @report_headings }}" value="{{@heading}}">
+			<th>{{@heading}}</th>
+		</repeat>
+		</tr>
+		<repeat group="{{@module_data}}" value="{{@row}}">
+			<tr>
+			<repeat group="{{@row}}" value="{{@val}}">
+				<td>{{@val}}</td>
+		 	</repeat>
+		 </tr>
+		</repeat>
+	</table>
+	</repeat>
+</check>
+
+
+
+

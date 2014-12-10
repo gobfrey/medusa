@@ -7,7 +7,82 @@ function get_all_user_answer($f3)
 
 function medusa_report($f3)
 {
+	#check user level
 
+
+	$form = _report_form($f3);
+
+	$f3->set("form", $form);
+	$f3->set('report_report', 'module');
+
+	$form_values = $form->fromForm();
+
+	#set defaults
+	if (empty($form_values))
+	{
+		$form_values['report_module'] = 'all_modules';
+		$form_values['report_report'] = 'module';
+		$form_values['report_date_from'] = date('Y-m-d',strtotime('-1 year'));
+		$form_values['report_date_to'] = date('Y-m-d');
+	}
+
+	$f3->set("form_values", $form_values);
+
+	#Patrick, is there a better way of doing this?
+	$csv_link_url = $f3->get('api_base') . $f3->get('PARAMS.0');
+	$cgi_params = array();
+	$cgi_params[] = 'report_format=csv';
+	foreach ($form_values as $param => $value)
+	{
+		$cgi_params[] = $param . '=' . urlencode($value);
+	}
+	$csv_link_url .= '?' . implode('&', $cgi_params);
+	$f3->set('report_csv_url', $csv_link_url);
+
+	if (
+		$f3->exists('REQUEST.report_format')
+		&& $f3->get('REQUEST.report_format') == 'csv'
+		&& $form_values['report_report'] == 'person' #no csv export for module report
+	)
+	{
+
+		{
+			header('Content-Type: text/csv; charset=UTF-8');
+			header('Content-Disposition: attachment; filename=medusa_person_report.csv');
+			$output = fopen('php://output', 'w');
+
+			fputcsv($output, array('Module','Username','Name','Date Completed'));
+			$data = _person_report($f3, $form_values);
+			foreach ($data as $module => $attempts)
+			{
+				foreach ($attempts as $attempt)
+				{
+					array_unshift($attempt, $module);
+					fputcsv($output, $attempt);
+				}
+			}
+			exit;
+		}
+	}
+
+	#get data
+	if ($form_values['report_report'] == 'person')
+	{
+		$f3->set('report_report','person');
+		$f3->set('report_headings',array('Username','Name','Date Completed'));
+		$f3->set('report_data', _person_report($f3, $form_values));
+	}
+	else
+	{
+		$f3->set('report_report','module');
+
+		$f3->set('report_headings', array('Activity', 'Completed'));
+		$f3->set('report_data', _module_report($f3, $form_values));
+	}
+
+	#load into structure for template to render
+
+	echo(Template::instance()->render("report.htm"));
 }
 
 
@@ -30,8 +105,11 @@ function medusa_certificate($f3)
 	{
 		$f3->set('css_root', $f3->get('drupal_base') . '/themes/southampton2/medusa_certificate/');
 		$f3->set('img_root', $f3->get('drupal_base') . '/themes/southampton2/medusa_certificate/');
+		$user = $f3->get('user');
+		$user = user_load($user->uid);
 
-		$f3->set('user_name', $f3->get('user')->name);
+
+		$f3->set('user_name', $user->field_name_from_ldap[LANGUAGE_NONE][0]['value']);
 		$f3->set('date_completed', date('d F Y',strtotime($attempt->date_completed)));
 
 		echo(Template::instance()->render("certificate.htm"));
@@ -39,7 +117,7 @@ function medusa_certificate($f3)
 	}
 	else
 	{
-		echo "Note Completed";
+		echo "Not Completed";
 	}
 }
 

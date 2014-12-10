@@ -261,6 +261,8 @@ div#content ul#compendiumTabs li.active a{
 	color: #039BC0 !important;
 	font-size: 140% !important;
 	font-weight:bold;
+	margin-top: 1em;
+	margin-bottom: 0.5em;
 }
 
 #title3{

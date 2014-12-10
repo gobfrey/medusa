@@ -40,7 +40,7 @@
 	border:thin #014359 solid;	
 	padding:2em;	
 	font-size: 120% !important;	
-	background-image:url('../css/medusaLogo.jpg');
+	background-image:url('medusaLogo.png');
 	background-repeat:no-repeat;
 	background-position:right bottom;
 }

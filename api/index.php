@@ -9,6 +9,7 @@ global $user;
 
 
 $f3=require('lib/fatfree/lib/base.php');
+require_once('lib/floraform/FloraForm.php');
 require_once('http_routes.php');
 require_once('functions.php');
 
